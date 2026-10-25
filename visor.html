@@ -1074,21 +1074,6 @@
       info.appendChild(meta);
       card.appendChild(info);
 
-      // Botón Ver — lanza ejecución en el iframe
-      if (indexFile && group !== "Todos los archivos") {
-        const btnVer = document.createElement("button");
-        btnVer.className = "btn btn-success btn-sm";
-        btnVer.title = "Ver ejecución interactiva del proyecto";
-        btnVer.innerHTML = "Ver";
-        
-        btnVer.onclick = function(e) {
-          e.stopPropagation();
-          selectProject(group);
-          launchExecution(indexFile.path);
-        };
-        card.appendChild(btnVer);
-      }
-
       card.onclick = function() { selectProject(group); };
       dom.projectList.appendChild(card);
     });
