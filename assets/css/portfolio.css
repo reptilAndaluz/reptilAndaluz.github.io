@@ -58,39 +58,210 @@
   --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
 }
 
-/* ── Modo Claro ([data-theme="light"]) ── */
+/* ── Modo Claro con la paleta de colores de porfolio.dev (Midudev) ── */
 [data-theme="light"] {
-  --bg-body: #f8fafc;
-  --bg-radial-1: rgba(99, 102, 241, 0.1);
-  --bg-radial-2: rgba(248, 250, 252, 0);
-  --bg-card: rgba(255, 255, 255, 0.88);
+  /* Fondo porfolio.dev: gray-50 (#f9fafb) con halo radial amarillo/ámbar */
+  --bg-body: #f9fafb;
+  --bg-radial-1: rgba(251, 191, 36, 0.14);
+  --bg-radial-2: rgba(255, 255, 255, 0.9);
+  --bg-card: rgba(255, 255, 255, 0.9);
   --bg-card-hover: #ffffff;
-  --bg-pill: rgba(255, 255, 255, 0.88);
-  --bg-mockup: #f1f5f9;
-  --bg-conic-inner: #ffffff;
-  --bg-dropdown: #ffffff;
+  --bg-pill: rgba(255, 255, 255, 0.85);
+  --bg-mockup: #ffffff;
+  --bg-conic-inner: #dcfce7;
+  --bg-dropdown: rgba(255, 255, 255, 0.98);
 
-  --border-subtle: rgba(15, 23, 42, 0.12);
-  --border-hover: rgba(99, 102, 241, 0.6);
+  /* Bordes sutiles grises (Tailwind border-gray-100 / border-gray-200) */
+  --border-subtle: #e5e7eb;
+  --border-card: #f3f4f6;
+  --border-hover: rgba(251, 191, 36, 0.4);
 
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
-  --text-dim: #94a3b8;
-  --text-heading: #0f172a;
-  --text-conic: #4338ca;
+  /* Texto (porfolio.dev: text-black, text-gray-800, text-gray-600) */
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  --text-heading: #09090b;
+  --text-conic: #166534;
 
-  --btn-bg: rgba(15, 23, 42, 0.05);
-  --btn-bg-hover: #0f172a;
+  /* Botones estilo porfolio.dev: bg-gray-100 border-gray-300 text-gray-800 -> hover bg-gray-900 text-white */
+  --btn-bg: #f3f4f6;
+  --btn-border: #d1d5db;
+  --btn-bg-hover: #111827;
   --btn-text-hover: #ffffff;
-  --tag-bg: #e2e8f0;
-  --tag-text: #1e293b;
-  --timeline-border: rgba(15, 23, 42, 0.14);
-  --shadow-mockup: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
-  --shadow-nav: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
-  --banner-bg: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(241, 245, 249, 0.95) 100%);
-  --banner-border: rgba(99, 102, 241, 0.3);
+  --tag-bg: #f3f4f6;
+  --tag-text: #374151;
+
+  /* Línea y punto de la línea de tiempo (yellow-400 y border-black/20) */
+  --timeline-border: rgba(0, 0, 0, 0.12);
+  --timeline-dot: #f59e0b;
+  --timeline-glow: rgba(251, 191, 36, 0.4);
+
+  /* Sombras de porfolio.dev */
+  --shadow-mockup: 0 10px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-nav: 0 4px 15px -2px rgba(0, 0, 0, 0.06);
+
+  /* Banner DWECL con reflejo ámbar */
+  --banner-bg: linear-gradient(135deg, rgba(251, 191, 36, 0.08) 0%, rgba(255, 255, 255, 0.95) 100%);
+  --banner-border: rgba(251, 191, 36, 0.35);
+
+  /* Acento de porfolio.dev: amarillo/ámbar cálido */
+  --accent-porfolio: #d97706;
+  --accent-porfolio-hover: #b45309;
 }
+
+/* Reglas de componentes adaptadas fielmente a la paleta clara de porfolio.dev */
+[data-theme="light"] .gradient-name {
+  background: linear-gradient(135deg, #09090b 25%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .hero-description strong,
+[data-theme="light"] .about-text-column strong {
+  color: #d97706;
+}
+
+[data-theme="light"] .section-title-midu svg {
+  color: #f59e0b;
+}
+
+[data-theme="light"] .accent-underline {
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0.7), transparent);
+}
+
+[data-theme="light"] .conic-animated-bg {
+  background: conic-gradient(from 90deg at 50% 50%, #f59e0b 0%, #166534 50%, #f59e0b 100%);
+}
+
+[data-theme="light"] .timeline-dot {
+  background: #f59e0b;
+  box-shadow: 0 0 10px 2px rgba(251, 191, 36, 0.4);
+}
+
+[data-theme="light"] .timeline-role {
+  color: #d97706;
+}
+
+[data-theme="light"] .timeline-link {
+  color: #d97706;
+}
+
+[data-theme="light"] .timeline-link:hover {
+  color: #b45309;
+}
+
+[data-theme="light"] .project-mockup-box {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+[data-theme="light"] .project-card-midu:hover .project-mockup-box {
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 20px 60px -10px rgba(251, 191, 36, 0.2);
+}
+
+[data-theme="light"] .btn-project {
+  border-color: #d1d5db;
+}
+
+[data-theme="light"] .btn-project-primary {
+  background: #d97706;
+  border-color: #f59e0b;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+}
+
+[data-theme="light"] .btn-project-primary:hover {
+  background: #b45309;
+}
+
+[data-theme="light"] .nav-link:hover {
+  color: #d97706;
+  background: rgba(251, 191, 36, 0.12);
+}
+
+[data-theme="light"] .nav-link.active {
+  color: #09090b;
+  background: rgba(251, 191, 36, 0.2);
+}
+
+[data-theme="light"] .nav-link-special {
+  color: #166534;
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+[data-theme="light"] .nav-link-special:hover {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+[data-theme="light"] .social-pill {
+  border-color: #d1d5db;
+}
+
+[data-theme="light"] .social-pill-visor {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #166534;
+}
+
+[data-theme="light"] .social-pill-visor:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: #ffffff;
+}
+
+[data-theme="light"] .theme-toggle-btn:hover {
+  color: #d97706;
+  background: rgba(251, 191, 36, 0.12);
+}
+
+[data-theme="light"] .theme-option-btn:hover {
+  background: rgba(251, 191, 36, 0.12);
+  color: #09090b;
+}
+
+[data-theme="light"] .theme-option-btn.active {
+  background: rgba(251, 191, 36, 0.15);
+  color: #d97706;
+}
+
+[data-theme="light"] .avatar-ambient-glow {
+  background: rgba(251, 191, 36, 0.25);
+}
+
+[data-theme="light"] .avatar-img {
+  border-color: #f59e0b;
+}
+
+[data-theme="light"] .about-photo-img {
+  border-color: #e5e7eb;
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.1), 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+[data-theme="light"] .unit-card,
+[data-theme="light"] .exercise-card {
+  background: #ffffff;
+  border-color: #e5e7eb;
+}
+
+[data-theme="light"] .unit-card:hover,
+[data-theme="light"] .exercise-card:hover {
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.15);
+}
+
+[data-theme="light"] .unit-number,
+[data-theme="light"] .exercise-num {
+  color: #d97706;
+  background: rgba(251, 191, 36, 0.15);
+}
+
+[data-theme="light"] .footer-links-row a:hover {
+  color: #d97706;
+}
+
 
 /* ── Reset y base ── */
 *, *::before, *::after {
@@ -310,12 +481,6 @@ img {
 
 .gradient-name {
   background: linear-gradient(135deg, #ffffff 40%, var(--anil-light) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-[data-theme="light"] .gradient-name {
-  background: linear-gradient(135deg, #0f172a 30%, var(--anil-dark) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
