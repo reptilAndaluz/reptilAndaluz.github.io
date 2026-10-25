@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Visor de Proyectos y Código — GitHub</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   
   <!-- Highlight.js para resaltado de sintaxis -->
   <link rel="stylesheet" id="theme-link" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
@@ -623,11 +624,12 @@
     </div>
 
     <div class="repo-control">
+      <a href="index.html" class="btn btn-outline btn-sm" style="color:#fff; border-color:rgba(255,255,255,0.4);" title="Volver al Portfolio">Portfolio</a>
       <input type="text" id="input-repo" placeholder="usuario/repositorio" spellcheck="false" title="Introduce usuario/repositorio">
       <select id="select-branch" title="Seleccionar rama"></select>
       <button class="btn btn-primary" id="btn-load-repo">Explorar</button>
       <button class="btn btn-secondary btn-sm" id="btn-user-repos" title="Ver todos los repos de este usuario">Repos</button>
-      <button class="btn btn-secondary btn-sm" id="btn-token" title="Configurar Token (evita rate limit)">🔑 Token</button>
+      <button class="btn btn-secondary btn-sm" id="btn-token" title="Configurar Token (evita rate limit)">Token</button>
     </div>
   </div>
 </header>
@@ -652,7 +654,7 @@
     <div class="card">
       <div class="card-header">
         <h3>
-          📁 Proyectos Detectados
+          Proyectos Detectados
           <span class="badge-count" id="count-projects">0</span>
         </h3>
       </div>
@@ -678,10 +680,10 @@
     <!-- Pestañas de Modo: Código / Ejecución -->
     <div class="view-mode-tabs">
       <button class="view-tab-btn active" id="tab-btn-code">
-        <span>💻 Ver Código</span>
+        <span>Ver Código</span>
       </button>
       <button class="view-tab-btn" id="tab-btn-preview">
-        <span>🚀 Vista Previa / Ejecución</span>
+        <span>Vista Previa / Ejecución</span>
       </button>
     </div>
 
@@ -693,12 +695,12 @@
       
       <div class="viewer-actions">
         <span id="file-meta" style="font-size:0.8rem; color:var(--text-muted); margin-right:0.4rem;"></span>
-        <button class="btn btn-outline btn-sm" id="btn-theme" title="Alternar tema oscuro / claro">🌓 Tema</button>
-        <button class="btn btn-outline btn-sm" id="btn-copy" title="Copiar código al portapapeles">📋 Copiar</button>
-        <a class="btn btn-outline btn-sm" id="btn-raw" target="_blank" title="Abrir versión cruda (Raw)">⬇️ Raw</a>
-        <a class="btn btn-outline btn-sm" id="btn-github" target="_blank" title="Abrir en GitHub.com">🐙 GitHub</a>
-        <button class="btn btn-success btn-sm hidden" id="btn-launch-preview" title="Ejecutar en la pestaña de vista previa">▶ Ver Ejecución</button>
-        <a class="btn btn-primary btn-sm hidden" id="btn-open-external" target="_blank" title="Abrir página en vivo en nueva pestaña">🚀 Probar Web</a>
+        <button class="btn btn-outline btn-sm" id="btn-theme" title="Alternar tema oscuro / claro">Tema</button>
+        <button class="btn btn-outline btn-sm" id="btn-copy" title="Copiar código al portapapeles">Copiar</button>
+        <a class="btn btn-outline btn-sm" id="btn-raw" target="_blank" title="Abrir versión cruda (Raw)">Raw</a>
+        <a class="btn btn-outline btn-sm" id="btn-github" target="_blank" title="Abrir en GitHub.com">GitHub</a>
+        <button class="btn btn-success btn-sm hidden" id="btn-launch-preview" title="Ejecutar en la pestaña de vista previa">Ver Ejecución</button>
+        <a class="btn btn-primary btn-sm hidden" id="btn-open-external" target="_blank" title="Abrir página en vivo en nueva pestaña">Probar Web</a>
       </div>
     </div>
 
@@ -721,15 +723,15 @@
       <div class="preview-header">
         <div style="display:flex; align-items:center; gap:0.6rem;">
           <span style="font-size:0.85rem; font-weight:600; color:var(--primary);" id="preview-title">Proyecto en ejecución</span>
-          <button class="btn btn-outline btn-sm" id="btn-reload-preview" title="Recargar ejecución">🔄 Recargar</button>
+          <button class="btn btn-outline btn-sm" id="btn-reload-preview" title="Recargar ejecución">Recargar</button>
         </div>
         
         <div style="display:flex; align-items:center; gap:0.6rem;">
           <div class="preview-device-buttons">
             <button class="btn-device active" data-width="100%">100%</button>
-            <button class="btn-device" data-width="1024px">🖥️ Desktop</button>
-            <button class="btn-device" data-width="768px">📱 Tablet</button>
-            <button class="btn-device" data-width="375px">📱 Móvil</button>
+            <button class="btn-device" data-width="1024px">Desktop</button>
+            <button class="btn-device" data-width="768px">Tablet</button>
+            <button class="btn-device" data-width="375px">Móvil</button>
           </div>
           <a class="btn btn-primary btn-sm" id="btn-preview-external" target="_blank">↗ Pestaña Externa</a>
         </div>
@@ -755,8 +757,8 @@
 <div class="modal-overlay" id="modal-token">
   <div class="modal-card">
     <div class="card-header">
-      <h3>🔑 Token de GitHub (Opcional)</h3>
-      <button class="btn btn-sm btn-outline" onclick="toggleModal('modal-token', false)">✕</button>
+      <h3>Token de GitHub (Opcional)</h3>
+      <button class="btn btn-sm btn-outline" onclick="toggleModal('modal-token', false)">&times;</button>
     </div>
     <div class="card-body">
       <p style="font-size:0.9rem; color:var(--text-muted); margin-top:0;">
@@ -775,8 +777,8 @@
 <div class="modal-overlay" id="modal-repos">
   <div class="modal-card" style="max-width:650px;">
     <div class="card-header">
-      <h3 id="modal-repos-title">📦 Repositorios públicos</h3>
-      <button class="btn btn-sm btn-outline" onclick="toggleModal('modal-repos', false)">✕</button>
+      <h3 id="modal-repos-title">Repositorios públicos</h3>
+      <button class="btn btn-sm btn-outline" onclick="toggleModal('modal-repos', false)">&times;</button>
     </div>
     <div class="card-body" style="max-height:400px; overflow-y:auto;" id="modal-repos-list">
       <div class="status-box"><div class="spinner"></div></div>
@@ -914,7 +916,7 @@
     }
     const res = await fetch("https://api.github.com/" + endpoint, { headers });
     if (!res.ok) {
-      if (res.status === 403) throw new Error("Límite de peticiones de GitHub alcanzado (Rate Limit). Configura un Token en 🔑 Token.");
+      if (res.status === 403) throw new Error("Límite de peticiones de GitHub alcanzado (Rate Limit). Configura un Token de GitHub.");
       if (res.status === 404) throw new Error("Repositorio o recurso no encontrado en GitHub.");
       throw new Error("Error HTTP " + res.status + ": " + res.statusText);
     }
@@ -988,8 +990,43 @@
         selectProject("Todos los archivos");
       }
     } catch (err) {
+      if (state.owner === "reptilAndaluz" && state.repo === "reptilAndaluz.github.io") {
+        state.tree = getLocalTreeFallback();
+        analyzeProjects();
+        renderProjects();
+        const params = new URLSearchParams(window.location.search);
+        const targetFile = params.get("f") || params.get("file");
+        if (targetFile) {
+          const found = state.tree.find(function(f) { return f.path === targetFile; });
+          if (found) {
+            selectProjectForFile(targetFile);
+            loadFile(targetFile);
+            return;
+          }
+        }
+        selectProject("EjerciciosRepaso");
+        showToast("Modo local activo para reptilAndaluz.github.io");
+        return;
+      }
       showError("Error al leer el árbol de ficheros: " + err.message);
     }
+  }
+
+  function getLocalTreeFallback() {
+    var files = [
+      { path: "index.html", size: 18000, type: "blob" },
+      { path: "visor.html", size: 56000, type: "blob" },
+      { path: "Burgosindex.html", size: 1919, type: "blob" },
+      { path: "assets/css/portfolio.css", size: 15000, type: "blob" },
+      { path: "dwecl/index.html", size: 6000, type: "blob" },
+      { path: "EjerciciosRepaso/index.html", size: 10000, type: "blob" }
+    ];
+    for (var i = 1; i <= 21; i++) {
+      files.push({ path: "EjerciciosRepaso/ejercicio" + i + "/index.html", size: 1000, type: "blob" });
+      files.push({ path: "EjerciciosRepaso/ejercicio" + i + "/script.js", size: 1500, type: "blob" });
+      files.push({ path: "EjerciciosRepaso/ejercicio" + i + "/style.css", size: 2000, type: "blob" });
+    }
+    return files;
   }
 
   function analyzeProjects() {
@@ -1027,8 +1064,7 @@
       
       const title = document.createElement("div");
       title.className = "project-name";
-      var icon = group === "Todos los archivos" ? "📂" : (group === "Raíz / General" ? "📄" : "🚀");
-      title.innerHTML = icon + " <strong>" + group + "</strong>";
+      title.innerHTML = "<strong>" + group + "</strong>";
       
       const meta = document.createElement("div");
       meta.className = "project-meta";
@@ -1038,12 +1074,12 @@
       info.appendChild(meta);
       card.appendChild(info);
 
-      // Botón ▶ Ver — lanza ejecución en el iframe
+      // Botón Ver — lanza ejecución en el iframe
       if (indexFile && group !== "Todos los archivos") {
         const btnVer = document.createElement("button");
         btnVer.className = "btn btn-success btn-sm";
         btnVer.title = "Ver ejecución interactiva del proyecto";
-        btnVer.innerHTML = "▶ Ver";
+        btnVer.innerHTML = "Ver";
         
         btnVer.onclick = function(e) {
           e.stopPropagation();
@@ -1210,8 +1246,11 @@
     showStatus("Descargando archivo...");
 
     try {
-      var res = await fetch(rawUrl);
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      var res = await fetch(rawUrl).catch(function() { return null; });
+      if (!res || !res.ok) {
+        res = await fetch(filePath).catch(function() { return null; });
+      }
+      if (!res || !res.ok) throw new Error("HTTP " + (res ? res.status : "Offline"));
       var text = await res.text();
 
       displayCode(text, filePath, fileSize || text.length);
@@ -1295,8 +1334,11 @@
       var rawBase = "https://raw.githubusercontent.com/" + state.owner + "/" + state.repo + "/" + state.branch + "/";
       var rawHtmlUrl = rawBase + htmlPath;
       
-      var htmlRes = await fetch(rawHtmlUrl);
-      if (!htmlRes.ok) throw new Error("No se pudo cargar HTML (" + htmlRes.status + ")");
+      var htmlRes = await fetch(rawHtmlUrl).catch(function() { return null; });
+      if (!htmlRes || !htmlRes.ok) {
+        htmlRes = await fetch(htmlPath).catch(function() { return null; });
+      }
+      if (!htmlRes || !htmlRes.ok) throw new Error("No se pudo cargar HTML");
       var htmlContent = await htmlRes.text();
 
       // Script inyectado para capturar console.log/error dentro del iframe
@@ -1333,8 +1375,11 @@
         if (!cr.href.startsWith("http://") && !cr.href.startsWith("https://")) {
           var targetCssPath = baseDir ? baseDir + "/" + cr.href.replace(/^\.\//, "") : cr.href.replace(/^\.\//, "");
           try {
-            var cssRes = await fetch(rawBase + targetCssPath);
-            if (cssRes.ok) {
+            var cssRes = await fetch(rawBase + targetCssPath).catch(function() { return null; });
+            if (!cssRes || !cssRes.ok) {
+              cssRes = await fetch(targetCssPath).catch(function() { return null; });
+            }
+            if (cssRes && cssRes.ok) {
               var cssText = await cssRes.text();
               htmlContent = htmlContent.replace(cr.fullTag, "<style>/* " + cr.href + " */\n" + cssText + "</style>");
               addConsoleLog("CSS vinculado: " + cr.href, "log");
@@ -1355,8 +1400,11 @@
         if (!jr.src.startsWith("http://") && !jr.src.startsWith("https://")) {
           var targetJsPath = baseDir ? baseDir + "/" + jr.src.replace(/^\.\//, "") : jr.src.replace(/^\.\//, "");
           try {
-            var jsRes = await fetch(rawBase + targetJsPath);
-            if (jsRes.ok) {
+            var jsRes = await fetch(rawBase + targetJsPath).catch(function() { return null; });
+            if (!jsRes || !jsRes.ok) {
+              jsRes = await fetch(targetJsPath).catch(function() { return null; });
+            }
+            if (jsRes && jsRes.ok) {
               var jsText = await jsRes.text();
               htmlContent = htmlContent.replace(jr.fullTag, "<script>/* " + jr.src + " */\n" + jsText + "\n<\/script>");
               addConsoleLog("Script cargado: " + jr.src, "log");
@@ -1437,7 +1485,7 @@
     dom.viewerStatus.classList.remove("hidden");
     dom.viewerStatus.classList.add("error");
     dom.viewerStatus.innerHTML =
-      '<p style="font-size:1.1rem; font-weight:bold; margin-bottom:0.5rem;">⚠️ No se pudo cargar</p>' +
+      '<p style="font-size:1.1rem; font-weight:bold; margin-bottom:0.5rem;">No se pudo cargar</p>' +
       '<p>' + msg + '</p>';
     dom.codeWrapper.classList.add("hidden");
     dom.previewWrapper.classList.add("hidden");
@@ -1459,7 +1507,7 @@
     toggleModal("modal-repos", true);
     var title = document.getElementById("modal-repos-title");
     var container = document.getElementById("modal-repos-list");
-    title.textContent = "📦 Repositorios públicos de @" + state.owner;
+    title.textContent = "Repositorios públicos de @" + state.owner;
     container.innerHTML = '<div class="status-box"><div class="spinner"></div></div>';
 
     try {
