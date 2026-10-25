@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Adrián Burgos Tomé">
+  <meta name="description" content="Portal de Unidades y 21 Ejercicios de Desarrollo Web en Entorno Cliente (DWECL) - Adrián Burgos Tomé.">
+  <title>DWECL · Desarrollo Web en Entorno Cliente | Adrián Burgos</title>
+  <link rel="stylesheet" href="../assets/css/portfolio.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+</head>
+<body>
+
+  <!-- Floating Pill Navbar -->
+  <header class="header-wrapper">
+    <nav class="header-nav" aria-label="Navegación DWECL">
+      <a class="nav-link" href="../index.html">← Portfolio</a>
+      <a class="nav-link" href="#unidades">Unidades</a>
+      <a class="nav-link active" href="#ejercicios-dwecl">21 Ejercicios</a>
+      <a class="nav-link nav-link-special" href="../visor.html" title="Abrir Visor de Código">Visor GitHub ↗</a>
+      <a class="nav-link" href="mailto:adrianburgostome762@gmail.com">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Contenedor Principal (max-w-4xl) -->
+  <main class="container">
+
+    <!-- Hero Header DWECL -->
+    <section class="hero-section" style="padding-bottom: 3rem;">
+      <div style="margin-bottom: 1.5rem;">
+        <span class="tech-tag" style="color: var(--anil-light); border-color: rgba(99,102,241,0.3); background: var(--anil-subtle);">
+          Módulo Formativo · DAW
+        </span>
+      </div>
+
+      <h1 class="hero-title" style="font-size: 2.5rem;">
+        Desarrollo Web en <span class="gradient-name">Entorno Cliente</span>
+      </h1>
+
+      <p class="hero-description" style="font-size: 1.15rem; max-width: 720px;">
+        Contenidos curriculares, prácticas y recopilación de los <strong>21 ejercicios de repaso de JavaScript</strong>. Inspecciona el código fuente con coloreado de sintaxis a través del <strong>Visor de GitHub</strong> o prueba su ejecución interactiva.
+      </p>
+
+      <nav class="social-pills-row">
+        <a href="../visor.html" class="social-pill social-pill-visor">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Abrir Todos en el Visor
+        </a>
+        <a href="../index.html" class="social-pill">
+          ← Volver al Portfolio
+        </a>
+      </nav>
+    </section>
+
+    <!-- Sección Unidades Curriculares (id="unidades") -->
+    <section class="section" id="unidades" style="padding-top: 1rem;">
+      <div>
+        <h2 class="section-title-midu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Unidades de trabajo
+        </h2>
+        <div class="accent-underline"></div>
+      </div>
+
+      <div class="units-grid">
+        <!-- Unidad 1 -->
+        <div class="unit-card active">
+          <div class="unit-number">Unidad 1 · En curso</div>
+          <h3 class="unit-title">Arquitecturas y lenguajes en clientes web</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Fundamentos de JavaScript nativo, tipos de datos, control de flujo, funciones, gestión del DOM y persistencia en cliente (Cookies).
+          </p>
+
+          <ul class="unit-items">
+            <li><strong>Actividad 2.1:</strong> Modificar contenido y CSS de elementos del DOM.</li>
+            <li><strong>Actividad 2.2:</strong> Preferencias de usuario mediante Cookies.</li>
+            <li><strong>Actividad 3.2:</strong> 21 ejercicios de repaso de fundamentos de JS.</li>
+            <li><strong>Visor GitHub:</strong> Análisis de código y previsualización.</li>
+          </ul>
+
+          <div style="margin-top: 1.5rem; display: flex; gap: 0.6rem;">
+            <a href="#ejercicios-dwecl" class="btn-project btn-project-primary" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">Ver 21 Ejercicios</a>
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio1/script.js" class="btn-project" style="font-size: 0.8rem; padding: 0.35rem 0.8rem;">Ver en Visor</a>
+          </div>
+        </div>
+
+        <!-- Unidad 2 -->
+        <div class="unit-card">
+          <div class="unit-number">Unidad 2 · Próximamente</div>
+          <h3 class="unit-title">Estructuras, Objetos y Eventos</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Clases ES6, encapsulamiento, manipulación avanzada de eventos en el DOM y validación de formularios reactivos.
+          </p>
+
+          <ul class="unit-items">
+            <li>Clases y modularización de código.</li>
+            <li>Propagación de eventos (bubbling y capturing).</li>
+            <li>Validaciones dinámicas de entrada de usuario.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Catálogo de los 21 Ejercicios de Repaso -->
+    <section class="section" id="ejercicios-dwecl" style="padding-top: 1rem;">
+      <div>
+        <h2 class="section-title-midu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          21 Ejercicios de Repaso (JS)
+        </h2>
+        <div class="accent-underline"></div>
+      </div>
+
+      <div class="exercises-grid">
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-01</span><span class="exercise-cat">Consola</span></div>
+            <h3 class="exercise-title">Variables y tipos de datos</h3>
+            <p class="exercise-desc">Tipos primitivos y complejos. Salidas por log, error, info y debug.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio1/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio1/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-02</span><span class="exercise-cat">Arrays</span></div>
+            <h3 class="exercise-title">Array aleatorio y filtrado</h3>
+            <p class="exercise-desc">100 números al azar, console.table y filtrado por intervalo numérico.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio2/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio2/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-03</span><span class="exercise-cat">Objetos</span></div>
+            <h3 class="exercise-title">Objeto persona complejo</h3>
+            <p class="exercise-desc">Objeto literal anidado con arrays, funciones y visualización estructurada.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio3/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio3/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-04</span><span class="exercise-cat">Entrada</span></div>
+            <h3 class="exercise-title">Suma con prompt()</h3>
+            <p class="exercise-desc">Suma de dos números con captura prompt() y validación preventiva.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio4/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio4/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-05</span><span class="exercise-cat">Condicional</span></div>
+            <h3 class="exercise-title">Par o impar con prompt()</h3>
+            <p class="exercise-desc">Evaluación de paridad mediante el operador residuo aritmético (%).</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio5/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio5/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-06</span><span class="exercise-cat">DOM</span></div>
+            <h3 class="exercise-title">Par o impar desde input HTML</h3>
+            <p class="exercise-desc">Integración entre DOM y JS: eventos submit y renderizado reactivo.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio6/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio6/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-07</span><span class="exercise-cat">Cadenas</span></div>
+            <h3 class="exercise-title">Contar vocales en palabra</h3>
+            <p class="exercise-desc">Análisis léxico iterativo insensible a mayúsculas y acentos.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio7/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio7/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-08</span><span class="exercise-cat">Math</span></div>
+            <h3 class="exercise-title">Aleatorio en intervalo</h3>
+            <p class="exercise-desc">Generación uniforme de enteros con Math.floor y Math.random.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio8/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio8/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-09</span><span class="exercise-cat">Cadenas</span></div>
+            <h3 class="exercise-title">Revertir cadena de texto</h3>
+            <p class="exercise-desc">Inversión de caracteres mediante split(''), reverse() y join('').</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio9/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio9/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-10</span><span class="exercise-cat">Arrays</span></div>
+            <h3 class="exercise-title">Número más grande</h3>
+            <p class="exercise-desc">Búsqueda de máximos con Math.max y spread operator (...) en array.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio10/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio10/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-11</span><span class="exercise-cat">Set</span></div>
+            <h3 class="exercise-title">Valores únicos con Set</h3>
+            <p class="exercise-desc">Eliminación de duplicados y cálculo de cardinalidad única.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio11/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio11/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-12</span><span class="exercise-cat">Filter</span></div>
+            <h3 class="exercise-title">Filtrar números pares</h3>
+            <p class="exercise-desc">Uso de función de orden superior Array.prototype.filter().</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio12/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio12/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-13</span><span class="exercise-cat">Cadenas</span></div>
+            <h3 class="exercise-title">Contar palabras en frase</h3>
+            <p class="exercise-desc">Tokenización textual omitiendo espacios múltiples.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio13/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio13/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-14</span><span class="exercise-cat">Algoritmo</span></div>
+            <h3 class="exercise-title">Comprobador Palíndromo</h3>
+            <p class="exercise-desc">Detección de simetría en secuencias de texto normalizadas.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio14/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio14/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-15</span><span class="exercise-cat">Math</span></div>
+            <h3 class="exercise-title">Primos en un rango</h3>
+            <p class="exercise-desc">Algoritmo de comprobación de divisibilidad y primalidad.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio15/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio15/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-16</span><span class="exercise-cat">Fórmula</span></div>
+            <h3 class="exercise-title">Celsius a Fahrenheit</h3>
+            <p class="exercise-desc">Conversor térmico bidireccional aplicando relaciones físicas.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio16/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio16/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-17</span><span class="exercise-cat">Sort</span></div>
+            <h3 class="exercise-title">Ordenar array numérico</h3>
+            <p class="exercise-desc">Comparador numérico (a, b) => a - b en Array.prototype.sort().</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio17/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio17/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-18</span><span class="exercise-cat">Reduce</span></div>
+            <h3 class="exercise-title">Palabra más larga</h3>
+            <p class="exercise-desc">Evaluación iterativa con reduce() para hallar la palabra máxima.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio18/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio18/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-19</span><span class="exercise-cat">Reduce</span></div>
+            <h3 class="exercise-title">Promedio de un array</h3>
+            <p class="exercise-desc">Media aritmética acumulando con reduce() y dividiendo por n.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio19/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio19/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-20</span><span class="exercise-cat">Cadenas</span></div>
+            <h3 class="exercise-title">Mayúsculas y minúsculas</h3>
+            <p class="exercise-desc">Alternancia de mayúsculas/minúsculas según índice de carácter.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio20/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio20/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+        <div class="exercise-card">
+          <div class="exercise-top">
+            <div class="exercise-meta"><span class="exercise-num">EJ-21</span><span class="exercise-cat">Filter</span></div>
+            <h3 class="exercise-title">Filtrar mayores que X</h3>
+            <p class="exercise-desc">Función pura de filtrado sobre array con límite numérico dinámico.</p>
+          </div>
+          <div class="exercise-actions">
+            <a href="../visor.html?f=EjerciciosRepaso/ejercicio21/script.js" class="btn-project" style="font-size:0.75rem; justify-content:center;">Visor</a>
+            <a href="../EjerciciosRepaso/ejercicio21/index.html" class="btn-project btn-project-primary" style="font-size:0.75rem; justify-content:center;">Demo</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-midu">
+      <div>
+        <span>© 2026 <strong>Adrián Burgos Tomé</strong> (reptilAndaluz). Entorno Cliente DWECL.</span>
+      </div>
+
+      <ul class="footer-links-row">
+        <li><a href="../index.html">Portfolio</a></li>
+        <li><a href="#unidades">Unidades</a></li>
+        <li><a href="#ejercicios-dwecl">21 Ejercicios</a></li>
+        <li><a href="../visor.html">Visor</a></li>
+      </ul>
+    </footer>
+
+  </main>
+
+</body>
+</html>
