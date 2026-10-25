@@ -4,25 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Adrián Burgos Tomé">
+  <meta name="description" content="Porfolio profesional de Adrián Burgos Tomé (reptilAndaluz), estudiante de Grado Superior en DAW y técnico en SMR.">
   <title>Porfolio de Adrián Burgos (reptilAndaluz) - Desarrollador Web y Estudiante DAW</title>
   <link rel="stylesheet" href="assets/css/portfolio.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- Script anti-FOUC para resolver tema sin parpadeo visual -->
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('portfolio-theme') || 'system';
+        var resolved = saved;
+        if (saved === 'system') {
+          resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.setAttribute('data-theme-setting', saved);
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body>
 
+  <!-- Enlace accesible para saltar directamente al contenido principal -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Región aria-live para anuncios de estado accesibles a lectores de pantalla -->
+  <div id="theme-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
   <!-- Floating Pill Navbar (estilo porfolio.dev) -->
-  <header class="header-wrapper">
+  <header class="header-wrapper" role="banner">
     <nav class="header-nav" aria-label="Navegación principal">
       <a class="nav-link" href="#formacion">Formación</a>
       <a class="nav-link" href="#proyectos">Proyectos</a>
       <a class="nav-link" href="#sobre-mi">Sobre mí</a>
       <a class="nav-link nav-link-special" href="dwecl/index.html" title="Ver ejercicios de Entorno Cliente">Ejercicios DWECL ↗</a>
       <a class="nav-link" href="mailto:adrianburgostome762@gmail.com">Contacto</a>
+
+      <!-- Selector accesible de tema: Claro / Oscuro / Sistema -->
+      <div class="theme-dropdown-container">
+        <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-label="Seleccionar tema (actualmente: según el sistema)" aria-haspopup="true" aria-expanded="false" title="Cambiar tema">
+          <span id="theme-active-icon" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </span>
+          <svg class="chevron-icon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <div id="theme-dropdown-menu" class="theme-dropdown-menu hidden" role="menu" aria-label="Opciones de tema">
+          <button class="theme-option-btn" role="menuitem" data-theme-value="light" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span>Claro</span>
+          </button>
+          <button class="theme-option-btn" role="menuitem" data-theme-value="dark" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span>Oscuro</span>
+          </button>
+          <button class="theme-option-btn" role="menuitem" data-theme-value="system" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>Sistema</span>
+          </button>
+        </div>
+      </div>
     </nav>
   </header>
 
   <!-- Contenedor Principal (max-w-4xl centrado) -->
-  <main class="container">
+  <main class="container" id="main-content" role="main" tabindex="-1">
 
     <!-- Hero Section -->
     <section class="hero-section" id="inicio">
@@ -91,16 +155,16 @@
     </section>
 
     <!-- Sección Formación Académica (Línea de tiempo) -->
-    <section class="section" id="formacion">
+    <section class="section" id="formacion" aria-labelledby="heading-formacion">
       <div>
-        <h2 class="section-title-midu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <h2 class="section-title-midu" id="heading-formacion">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
             <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
           </svg>
           Formación académica
         </h2>
-        <div class="accent-underline"></div>
+        <div class="accent-underline" aria-hidden="true"></div>
       </div>
 
       <ol class="timeline-list">
@@ -162,16 +226,16 @@
     </section>
 
     <!-- Sección Proyectos Destacados (GitHub Projects) -->
-    <section class="section" id="proyectos">
+    <section class="section" id="proyectos" aria-labelledby="heading-proyectos">
       <div>
-        <h2 class="section-title-midu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <h2 class="section-title-midu" id="heading-proyectos">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="16 18 22 12 16 6"></polyline>
             <polyline points="8 6 2 12 8 18"></polyline>
           </svg>
           Proyectos
         </h2>
-        <div class="accent-underline"></div>
+        <div class="accent-underline" aria-hidden="true"></div>
       </div>
 
       <div class="projects-column">
@@ -366,16 +430,16 @@
     </section>
 
     <!-- Sección Sobre mí (id="sobre-mi") -->
-    <section class="section" id="sobre-mi">
+    <section class="section" id="sobre-mi" aria-labelledby="heading-sobre-mi">
       <div>
-        <h2 class="section-title-midu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <h2 class="section-title-midu" id="heading-sobre-mi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
             <circle cx="12" cy="7" r="4"></circle>
           </svg>
           Sobre mí
         </h2>
-        <div class="accent-underline"></div>
+        <div class="accent-underline" aria-hidden="true"></div>
       </div>
 
       <article class="about-content-layout">
@@ -398,7 +462,7 @@
     </section>
 
     <!-- Footer estilo porfolio.dev -->
-    <footer class="footer-midu">
+    <footer class="footer-midu" role="contentinfo">
       <div>
         <span>© 2026 <strong>Adrián Burgos Tomé</strong> (reptilAndaluz).</span>
       </div>
@@ -414,5 +478,109 @@
 
   </main>
 
+  <!-- Controlador interactivo accesible de cambio de tema (Claro / Oscuro / Sistema) -->
+  <script>
+    (function() {
+      const THEME_KEY = 'portfolio-theme';
+      const toggleBtn = document.getElementById('theme-toggle-btn');
+      const menu = document.getElementById('theme-dropdown-menu');
+      const activeIcon = document.getElementById('theme-active-icon');
+      const liveStatus = document.getElementById('theme-status');
+      const optionBtns = document.querySelectorAll('.theme-option-btn');
+
+      const icons = {
+        light: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>',
+        dark: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+        system: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>'
+      };
+
+      function getSystemPreference() {
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function applyTheme(setting, announce) {
+        const resolved = setting === 'system' ? getSystemPreference() : setting;
+        document.documentElement.setAttribute('data-theme', resolved);
+        document.documentElement.setAttribute('data-theme-setting', setting);
+        localStorage.setItem(THEME_KEY, setting);
+
+        if (activeIcon) {
+          activeIcon.innerHTML = icons[setting] || icons.system;
+        }
+
+        if (toggleBtn) {
+          const labelMap = { light: 'claro', dark: 'oscuro', system: 'según el sistema' };
+          toggleBtn.setAttribute('aria-label', 'Seleccionar tema (actualmente: ' + (labelMap[setting] || setting) + ')');
+        }
+
+        optionBtns.forEach(function(btn) {
+          const isSelected = btn.getAttribute('data-theme-value') === setting;
+          btn.classList.toggle('active', isSelected);
+          btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+        });
+
+        if (announce && liveStatus) {
+          const msgMap = {
+            light: 'Tema cambiado a modo claro.',
+            dark: 'Tema cambiado a modo oscuro.',
+            system: 'Tema configurado según el sistema (' + (resolved === 'dark' ? 'oscuro' : 'claro') + ').'
+          };
+          liveStatus.textContent = msgMap[setting] || 'Tema actualizado.';
+        }
+      }
+
+      // Inicialización con tema guardado o sistema
+      var initialSetting = localStorage.getItem(THEME_KEY) || 'system';
+      applyTheme(initialSetting, false);
+
+      // Detección reactiva de cambios en el tema del SO si se eligió 'system'
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+        if ((localStorage.getItem(THEME_KEY) || 'system') === 'system') {
+          applyTheme('system', true);
+        }
+      });
+
+      function setMenuOpen(open) {
+        if (open) {
+          menu.classList.remove('hidden');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          menu.classList.add('hidden');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      if (toggleBtn && menu) {
+        toggleBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = !menu.classList.contains('hidden');
+          setMenuOpen(!isOpen);
+        });
+
+        optionBtns.forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var val = btn.getAttribute('data-theme-value');
+            applyTheme(val, true);
+            setMenuOpen(false);
+            toggleBtn.focus();
+          });
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+            setMenuOpen(false);
+          }
+        });
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+            setMenuOpen(false);
+            toggleBtn.focus();
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

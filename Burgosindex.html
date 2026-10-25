@@ -6,6 +6,18 @@
     <title>Fundamentos de JavaScript · 21 Ejercicios</title>
     <link rel="stylesheet" href="assets/css/portfolio.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('portfolio-theme') || 'system';
+          var resolved = saved;
+          if (saved === 'system') {
+            resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', resolved);
+        } catch(e) {}
+      })();
+    </script>
 </head>
 <body style="padding: 3rem 1rem;">
     <div class="container" style="max-width: 800px;">

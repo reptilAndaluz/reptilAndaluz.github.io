@@ -8,6 +8,18 @@
   <title>DWECL · Desarrollo Web en Entorno Cliente | Adrián Burgos</title>
   <link rel="stylesheet" href="../assets/css/portfolio.css">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('portfolio-theme') || 'system';
+        var resolved = saved;
+        if (saved === 'system') {
+          resolved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', resolved);
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body>
 
