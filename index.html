@@ -3,64 +3,420 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>escomz.github.io — Proyectos y Código</title>
-  <!-- Redirección automática a visor.html -->
-  <meta http-equiv="refresh" content="0; url=visor.html">
-  <style>
-    :root {
-      --primary: #1d3557;
-      --accent: #2cd326;
-      --bg: #f4f5f8;
-      --card: #ffffff;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #222;
-    }
-    .card {
-      background: var(--card);
-      border-radius: 10px;
-      padding: 2.5rem;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      text-align: center;
-    }
-    h1 { margin-top: 0; color: var(--primary); font-size: 1.5rem; }
-    p { color: #666; margin-bottom: 1.5rem; font-size: 0.95rem; }
-    .links { display: flex; flex-direction: column; gap: 0.75rem; }
-    .btn {
-      display: block;
-      padding: 0.75rem 1.2rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.2s;
-    }
-    .btn-primary { background: #1d3557; color: #fff; }
-    .btn-primary:hover { background: #457b9d; }
-    .btn-accent { background: var(--accent); color: #14213d; }
-    .btn-accent:hover { background: #24af1f; color: #fff; }
-    .btn-outline { border: 1px solid #ccc; color: #333; }
-    .btn-outline:hover { background: #e9ecef; }
-  </style>
+  <meta name="author" content="Adrián Burgos Tomé">
+  <title>Porfolio de Adrián Burgos (reptilAndaluz) - Desarrollador Web y Estudiante DAW</title>
+  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
-  <div class="card">
-    <h1>🚀 escomz.github.io</h1>
-    <p>Redirigiendo al visor de proyectos y código...</p>
-    <div class="links">
-      <a href="visor.html" class="btn btn-accent">💻 Abrir Visor de Código &amp; Proyectos</a>
-      <a href="proyecto1/" class="btn btn-primary">▶ Ver Proyecto 1 (Hola Mundo TS)</a>
-      <a href="guia.html" class="btn btn-outline">📖 Ver Guía de Configuración</a>
-    </div>
-  </div>
+
+  <!-- Floating Pill Navbar (estilo porfolio.dev) -->
+  <header class="header-wrapper">
+    <nav class="header-nav" aria-label="Navegación principal">
+      <a class="nav-link" href="#formacion">Formación</a>
+      <a class="nav-link" href="#proyectos">Proyectos</a>
+      <a class="nav-link" href="#sobre-mi">Sobre mí</a>
+      <a class="nav-link nav-link-special" href="dwecl/index.html" title="Ver ejercicios de Entorno Cliente">Ejercicios DWECL ↗</a>
+      <a class="nav-link" href="mailto:adrianburgostome762@gmail.com">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Contenedor Principal (max-w-4xl centrado) -->
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="inicio">
+      <div class="hero-avatar-row">
+        <!-- Avatar con resplandor ambiental -->
+        <div class="avatar-wrapper">
+          <div class="avatar-ambient-glow" aria-hidden="true"></div>
+          <img class="avatar-img" src="assets/img/adrian.jpg" alt="Adrián Burgos Tomé" onerror="this.onerror=null; this.src='https://github.com/reptilAndaluz.png';">
+        </div>
+
+        <!-- Badge de disponibilidad con borde animado cónico -->
+        <a href="mailto:adrianburgostome762@gmail.com" class="status-badge-container">
+          <span class="conic-border-wrapper">
+            <span class="conic-animated-bg"></span>
+            <div class="conic-inner-content">
+              <span class="pulse-dot"></span>
+              Disponible para trabajar / Prácticas DAW
+            </div>
+          </span>
+        </a>
+      </div>
+
+      <h1 class="hero-title">
+        Hey, soy <span class="gradient-name">Adrián Burgos</span>
+      </h1>
+
+      <p class="hero-description">
+        Estudiante de <strong>Grado Superior en DAW</strong> en el <strong>IES Zaidín Vergeles</strong> (Granada, España). Especializado en <strong>JavaScript moderno</strong>, desarrollo web y sistemas <strong>GNU/Linux</strong>.
+      </p>
+
+      <!-- Botones / Redes sociales estilo porfolio.dev -->
+      <nav class="social-pills-row" aria-label="Redes sociales y contacto">
+        <a href="mailto:adrianburgostome762@gmail.com" class="social-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 18h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7.5"></path>
+            <path d="M3 6l9 6l9 -6"></path>
+            <path d="M15 18h6"></path>
+            <path d="M18 15l3 3l-3 3"></path>
+          </svg>
+          Contáctame
+        </a>
+
+        <a href="https://github.com/reptilAndaluz" target="_blank" rel="noopener noreferrer" class="social-pill">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+
+        <a href="visor.html" class="social-pill social-pill-visor" title="Abrir Visor de Código GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Visor de Código
+        </a>
+
+        <a href="dwecl/index.html" class="social-pill" title="Ver tareas de ejercicios de repaso">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          Ejercicios DWECL (21)
+        </a>
+      </nav>
+    </section>
+
+    <!-- Sección Formación Académica (Línea de tiempo) -->
+    <section class="section" id="formacion">
+      <div>
+        <h2 class="section-title-midu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+          </svg>
+          Formación académica
+        </h2>
+        <div class="accent-underline"></div>
+      </div>
+
+      <ol class="timeline-list">
+        <!-- Hito 1: Grado Superior DAW (IES Zaidín Vergeles) -->
+        <li class="timeline-item">
+          <span class="timeline-dot active"></span>
+          <div class="timeline-grid">
+            <div>
+              <h3 class="timeline-role">Desarrollo de Aplicaciones Web (DAW)</h3>
+              <h4 class="timeline-institution">IES Zaidín Vergeles · Granada</h4>
+              <time class="timeline-date">Septiembre 2025 - Actualidad</time>
+            </div>
+            <div>
+              <p class="timeline-desc">
+                Grado Superior enfocado en el diseño, programación y despliegue de aplicaciones web. Especialización en desarrollo frontend (DWECL, JavaScript ES6+, manipulación del DOM y arquitecturas limpias), desarrollo backend (DWES, PHP y bases de datos relacionales) y entornos de despliegue.
+              </p>
+              <a href="dwecl/index.html" class="timeline-link">
+                Ver prácticas de Entorno Cliente (DWECL)
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <!-- Hito 2: Certificación Cisco CCNA 1 -->
+        <li class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-grid">
+            <div>
+              <h3 class="timeline-role">CCNA 1: Introduction to Networks</h3>
+              <h4 class="timeline-institution">Cisco Networking Academy · IES Marqués de Comares</h4>
+              <time class="timeline-date">2024 - 2025 · 2º curso de SMR</time>
+            </div>
+            <div>
+              <p class="timeline-desc">
+                Certificación oficial cursada durante el segundo año del Grado Medio. Capacitación en fundamentos de redes, modelos OSI y TCP/IP, direccionamiento IPv4 e IPv6, subredes, conmutación Ethernet y configuración inicial de routers y switches Cisco.
+              </p>
+            </div>
+          </div>
+        </li>
+
+        <!-- Hito 3: Grado Medio SMR (IES Marqués de Comares) -->
+        <li class="timeline-item">
+          <span class="timeline-dot"></span>
+          <div class="timeline-grid">
+            <div>
+              <h3 class="timeline-role">Sistemas Microinformáticos y Redes (SMR)</h3>
+              <h4 class="timeline-institution">IES Marqués de Comares · Lucena (Córdoba)</h4>
+              <time class="timeline-date">Septiembre 2023 - Junio 2025</time>
+            </div>
+            <div>
+              <p class="timeline-desc">
+                Formación Profesional de Grado Medio orientada al montaje, mantenimiento y administración de sistemas informáticos (GNU/Linux y Windows Server), implantación de servicios de red (DNS, DHCP, servidores web), seguridad informática y primeros fundamentos de desarrollo.
+              </p>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Sección Proyectos Destacados (GitHub Projects) -->
+    <section class="section" id="proyectos">
+      <div>
+        <h2 class="section-title-midu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Proyectos
+        </h2>
+        <div class="accent-underline"></div>
+      </div>
+
+      <div class="projects-column">
+
+        <!-- Proyecto 1: Visor de Código GitHub -->
+        <article class="project-card-midu">
+          <div class="project-mockup-wrapper">
+            <div class="project-mockup-box">
+              <div style="display: flex; gap: 0.35rem; margin-bottom: 1rem;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #94a3b8; margin-left: auto;">visor.html</span>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #cbd5e1; line-height: 1.5;">
+                <span style="color: #f43f5e;">const</span> repo = <span style="color: #34d399;">"reptilAndaluz.github.io"</span>;<br>
+                <span style="color: #60a5fa;">async function</span> render() {<br>
+                &nbsp;&nbsp;<span style="color: #fbbf24;">await</span> githubApi.fetchTree();<br>
+                &nbsp;&nbsp;sandbox.runCode();<br>
+                }
+              </div>
+              <div style="margin-top: 1.25rem; font-size: 0.75rem; color: #34d399; font-weight: 600;">
+                ● Sandbox Iframe + Consola de logs integrada
+              </div>
+            </div>
+          </div>
+
+          <div class="project-details-box">
+            <h3 class="project-title">Visor de Código &amp; Proyectos GitHub</h3>
+            <ul class="tech-tags-list">
+              <li class="tech-tag">JavaScript ES6</li>
+              <li class="tech-tag">GitHub API</li>
+              <li class="tech-tag">Highlight.js</li>
+              <li class="tech-tag">CSS3</li>
+            </ul>
+            <p class="project-summary">
+              Herramienta web interactiva que conecta con la API de GitHub para inspeccionar ramas, árboles de carpetas y código con coloreado de sintaxis, permitiendo además ejecutar proyectos web en vivo con sandbox aislado.
+            </p>
+            <footer class="project-actions">
+              <a href="https://github.com/reptilAndaluz/reptilAndaluz.github.io" target="_blank" rel="noopener noreferrer" class="btn-project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                Code
+              </a>
+              <a href="visor.html" class="btn-project btn-project-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                Preview
+              </a>
+            </footer>
+          </div>
+        </article>
+
+        <!-- Proyecto 2: Catálogo Asociaciones -->
+        <article class="project-card-midu">
+          <div class="project-mockup-wrapper">
+            <div class="project-mockup-box">
+              <div style="display: flex; gap: 0.35rem; margin-bottom: 1rem;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #94a3b8; margin-left: auto;">Hospital San Cecilio</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M12 7v8"/></svg>
+                Portal de Asociaciones Hospitalarias
+              </div>
+              <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;">
+                Gestión de convenios, altas administrativas y directorio de entidades colaboradoras sin ánimo de lucro.
+              </p>
+              <div style="margin-top: 1rem; font-size: 0.75rem; color: #818cf8; font-family: var(--font-mono);">
+                PHP + MariaDB + CRUD seguro
+              </div>
+            </div>
+          </div>
+
+          <div class="project-details-box">
+            <h3 class="project-title">Catálogo de Asociaciones · Hospital San Cecilio</h3>
+            <ul class="tech-tags-list">
+              <li class="tech-tag">PHP</li>
+              <li class="tech-tag">MySQL / MariaDB</li>
+              <li class="tech-tag">HTML5 / CSS3</li>
+              <li class="tech-tag">JavaScript</li>
+            </ul>
+            <p class="project-summary">
+              Portal web concebido para el Hospital San Cecilio de Granada para que el personal de administración gestione las entradas de distintas asociaciones benéficas mediante formularios dinámicos y base de datos relacional.
+            </p>
+            <footer class="project-actions">
+              <a href="https://github.com/reptilAndaluz/Catologo_Asociaciones" target="_blank" rel="noopener noreferrer" class="btn-project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                Code
+              </a>
+            </footer>
+          </div>
+        </article>
+
+        <!-- Proyecto 3: Infraestructura Automatizada LAMP -->
+        <article class="project-card-midu">
+          <div class="project-mockup-wrapper">
+            <div class="project-mockup-box">
+              <div style="display: flex; gap: 0.35rem; margin-bottom: 1rem;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #94a3b8; margin-left: auto;">Vagrantfile</span>
+              </div>
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: #a5b4fc; line-height: 1.5;">
+                $ vagrant up<br>
+                [lamp] Provisioning Debian 12...<br>
+                [lamp] Installing Apache2 &amp; PHP 8.2...<br>
+                [lamp] Initializing MariaDB cluster...<br>
+                <span style="color: #34d399;">[OK] Entorno reproducible desplegado en 192.168.33.10</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-details-box">
+            <h3 class="project-title">Infraestructura Automatizada LAMP (IaC)</h3>
+            <ul class="tech-tags-list">
+              <li class="tech-tag">Vagrant</li>
+              <li class="tech-tag">Bash Scripting</li>
+              <li class="tech-tag">GNU/Linux</li>
+              <li class="tech-tag">Apache</li>
+              <li class="tech-tag">MariaDB</li>
+            </ul>
+            <p class="project-summary">
+              Infraestructura como código para desplegar un stack de desarrollo web LAMP completo de forma 100% automatizada y reproducible mediante máquinas virtuales y scripts modulares de provisión.
+            </p>
+            <footer class="project-actions">
+              <a href="https://github.com/reptilAndaluz/lamp-vagrant" target="_blank" rel="noopener noreferrer" class="btn-project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                Code
+              </a>
+            </footer>
+          </div>
+        </article>
+
+        <!-- Proyecto 4: D&D Character Gestor -->
+        <article class="project-card-midu">
+          <div class="project-mockup-wrapper">
+            <div class="project-mockup-box">
+              <div style="display: flex; gap: 0.35rem; margin-bottom: 1rem;">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b;"></span>
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981;"></span>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #94a3b8; margin-left: auto;">D&amp;D RPG</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.45rem; font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l6-6M16 16l4 4M19 21l2-2"/></svg>
+                D&amp;D Character Sheet Manager
+              </div>
+              <p style="font-size: 0.82rem; color: #94a3b8; line-height: 1.5;">
+                Cálculo de bonificadores, tiradas de salvación y persistencia local sin servidor.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-details-box">
+            <h3 class="project-title">Gestor de Personajes D&amp;D</h3>
+            <ul class="tech-tags-list">
+              <li class="tech-tag">JavaScript ES6</li>
+              <li class="tech-tag">LocalStorage</li>
+              <li class="tech-tag">DOM Manipulation</li>
+              <li class="tech-tag">CSS Flexbox</li>
+            </ul>
+            <p class="project-summary">
+              Aplicación frontend para jugadores de rol que permite crear, editar y consultar hojas de personajes con cálculo dinámico de estadísticas y almacenamiento local en el navegador.
+            </p>
+            <footer class="project-actions">
+              <a href="https://github.com/reptilAndaluz/DandD_CharacterGestor" target="_blank" rel="noopener noreferrer" class="btn-project">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                Code
+              </a>
+            </footer>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Banner Especial: Enlace a los Ejercicios de Entorno Cliente (DWECL) -->
+      <div class="dwecl-banner-card">
+        <div class="dwecl-banner-content">
+          <h3>Módulo DWECL · 21 Ejercicios de Repaso</h3>
+          <p>
+            ¿Quieres ver las tareas prácticas de fundamentos de JavaScript? Visita la página dedicada a Entorno Cliente para inspeccionar cada ejercicio en el visor o ejecutar las demos interactivas.
+          </p>
+        </div>
+        <div class="dwecl-banner-actions">
+          <a href="dwecl/index.html" class="btn-project btn-project-primary">
+            Explorar Ejercicios DWECL →
+          </a>
+          <a href="visor.html" class="btn-project">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Abrir Visor
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Sobre mí (id="sobre-mi") -->
+    <section class="section" id="sobre-mi">
+      <div>
+        <h2 class="section-title-midu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          Sobre mí
+        </h2>
+        <div class="accent-underline"></div>
+      </div>
+
+      <article class="about-content-layout">
+        <div class="about-text-column">
+          <p>
+            Me llamo <strong>Adrián Burgos</strong>, aunque en GitHub y la comunidad me conocen como <strong>reptilAndaluz</strong>. Mi pasión por la tecnología comenzó experimentando con configuraciones de sistemas <strong>GNU/Linux</strong> y desgranando cómo funciona la web por dentro.
+          </p>
+          <p>
+            Tras cursar el <strong>Grado Medio de SMR</strong> en el <strong>IES Marqués de Comares</strong> (Lucena) y certificarme en <strong>Cisco CCNA 1</strong>, actualmente continúo mi formación en el <strong>Grado Superior de DAW</strong> en el <strong>IES Zaidín Vergeles</strong> (Granada). Me enfoco en el desarrollo frontend con <strong>JavaScript nativo moderno</strong>, cuidando la arquitectura limpia, semántica y rendimiento web.
+          </p>
+          <p>
+            Además del desarrollo web en cliente y servidor (PHP, SQL), disfruto automatizando entornos de trabajo mediante <strong>scripts en Bash y virtualización</strong> con GNU/Linux. Mi objetivo es incorporarme a un equipo donde pueda realizar mis prácticas, seguir aprendiendo y aportando valor técnico.
+          </p>
+        </div>
+
+        <div class="about-photo-wrapper">
+          <img class="about-photo-img" src="assets/img/adrian.jpg" alt="Adrián Burgos Tomé" onerror="this.onerror=null; this.src='https://github.com/reptilAndaluz.png';">
+        </div>
+      </article>
+    </section>
+
+    <!-- Footer estilo porfolio.dev -->
+    <footer class="footer-midu">
+      <div>
+        <span>© 2026 <strong>Adrián Burgos Tomé</strong> (reptilAndaluz).</span>
+      </div>
+
+      <ul class="footer-links-row">
+        <li><a href="#formacion">Formación</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="dwecl/index.html">Ejercicios DWECL</a></li>
+        <li><a href="mailto:adrianburgostome762@gmail.com">Contacto</a></li>
+      </ul>
+    </footer>
+
+  </main>
+
 </body>
 </html>
