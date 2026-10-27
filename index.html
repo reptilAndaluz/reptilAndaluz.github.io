@@ -23,7 +23,7 @@
     })();
   </script>
 </head>
-<body>
+<body id="top">
 
   <!-- Enlace accesible para saltar directamente al contenido principal -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
@@ -34,11 +34,16 @@
   <!-- Floating Pill Navbar (estilo porfolio.dev) -->
   <header class="header-wrapper" role="banner">
     <nav class="header-nav" aria-label="Navegación principal">
-      <a class="nav-link" href="#formacion">Formación</a>
-      <a class="nav-link" href="#proyectos">Proyectos</a>
-      <a class="nav-link" href="#sobre-mi">Sobre mí</a>
-      <a class="nav-link nav-link-special" href="dwecl/index.html" title="Ver ejercicios de Entorno Cliente">Ejercicios DWECL ↗</a>
-      <a class="nav-link" href="mailto:adrianburgostome762@gmail.com">Contacto</a>
+      <div class="header-nav-links" id="header-nav-links">
+        <a class="nav-link" href="#formacion">Formación</a>
+        <a class="nav-link" href="#proyectos">Proyectos</a>
+        <a class="nav-link" href="#sobre-mi">Sobre mí</a>
+        <a class="nav-link nav-link-special" href="dwecl/index.html" title="Ver ejercicios de Entorno Cliente">
+          <span class="nav-text-desktop">Ejercicios DWECL ↗</span>
+          <span class="nav-text-mobile" aria-hidden="true">DWECL ↗</span>
+        </a>
+        <a class="nav-link" href="mailto:adrianburgostome762@gmail.com">Contacto</a>
+      </div>
 
       <!-- Selector accesible de tema: Claro / Oscuro / Sistema -->
       <div class="theme-dropdown-container">
@@ -579,6 +584,43 @@
           }
         });
       }
+
+      // Scroll spy para resaltar la sección activa en el nav
+      (function() {
+        var navLinks = document.querySelectorAll('.header-nav a.nav-link[href^="#"]');
+        if (!navLinks.length || !('IntersectionObserver' in window)) return;
+
+        var sections = [];
+        navLinks.forEach(function(link) {
+          var targetId = link.getAttribute('href').slice(1);
+          var el = document.getElementById(targetId);
+          if (el) sections.push(el);
+        });
+
+        if (!sections.length) return;
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var id = entry.target.id;
+              navLinks.forEach(function(link) {
+                var isCurrent = link.getAttribute('href') === '#' + id;
+                link.classList.toggle('active', isCurrent);
+                if (isCurrent && link.parentElement && link.parentElement.classList.contains('header-nav-links')) {
+                  link.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+                }
+              });
+            }
+          });
+        }, {
+          rootMargin: '-20% 0px -55% 0px',
+          threshold: 0
+        });
+
+        sections.forEach(function(sec) {
+          observer.observe(sec);
+        });
+      })();
     })();
   </script>
 </body>
