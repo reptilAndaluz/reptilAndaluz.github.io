@@ -1170,36 +1170,194 @@ img {
   border-top: 1px solid var(--border-subtle);
 }
 
-/* ── Footer ── */
+/* ── Footer estilo porfolio.dev ── */
 .footer-midu {
-  margin-top: 4rem;
+  margin-top: 5rem;
   margin-bottom: 2.5rem;
-  padding-top: 2rem;
+  padding-top: 2.5rem;
   border-top: 1px solid var(--border-subtle);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
-  gap: 1.25rem;
+  justify-content: center;
+  gap: 1.5rem;
   font-size: 0.88rem;
   color: var(--text-muted);
+  width: 100%;
+  position: relative;
+  transition: margin-top 0.25s ease, padding-top 0.25s ease;
 }
 
-@media (min-width: 768px) {
-  .footer-midu {
-    flex-direction: row;
-    justify-content: space-between;
-  }
+.footer-copy {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+
+.footer-copy strong {
+  color: var(--text-secondary);
+  font-weight: 600;
 }
 
 .footer-links-row {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.85rem;
   list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links-row li {
+  display: inline-flex;
+}
+
+.footer-links-row a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 9999px;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  min-height: 38px; /* Touch target accesible en móvil */
 }
 
 .footer-links-row a:hover {
   color: var(--anil-light);
-  text-decoration: underline;
+  background: var(--anil-subtle);
+  text-decoration: none;
+}
+
+/* Botón accesible Volver arriba */
+.footer-back-to-top {
+  color: var(--anil-light) !important;
+  background: var(--anil-subtle);
+  font-weight: 600 !important;
+}
+
+.footer-back-to-top svg {
+  transition: transform 0.2s ease;
+}
+
+.footer-back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Compatibilidad con clases alternativas de footer */
+.footer-content {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.85rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.75rem;
+  border-radius: 9999px;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 38px;
+}
+
+.footer-links a:hover {
+  color: var(--anil-light);
+  background: var(--anil-subtle);
+}
+
+/* Reglas de Footer en Pantallas Medianas y Grandes (>= 768px) */
+@media (min-width: 768px) {
+  .footer-midu {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    text-align: left;
+  }
+
+  .footer-links-row {
+    justify-content: flex-end;
+    gap: 0.5rem 1rem;
+  }
+
+  .footer-links {
+    justify-content: flex-end;
+    gap: 0.5rem 1rem;
+  }
+}
+
+/* Reglas de Footer en Móviles (<= 640px) */
+@media (max-width: 640px) {
+  .footer-midu {
+    margin-top: 3.5rem;
+    margin-bottom: 2rem;
+    padding-top: 1.75rem;
+    gap: 1.25rem;
+  }
+
+  .footer-links-row {
+    gap: 0.35rem 0.5rem;
+  }
+
+  .footer-links-row a {
+    padding: 0.32rem 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem;
+  }
+}
+
+/* Modo claro para Footer */
+[data-theme="light"] .footer-links-row a:hover,
+[data-theme="light"] .footer-links a:hover {
+  color: #d97706;
+  background: rgba(217, 119, 6, 0.1);
+}
+
+[data-theme="light"] .footer-back-to-top {
+  color: #d97706 !important;
+  background: rgba(217, 119, 6, 0.1);
+}
+
+[data-theme="light"] .footer-copy strong {
+  color: #1f2937;
 }
 
 /* ── Selector de Tema (Pill Dropdown estilo porfolio.dev) ── */
