@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katas de JavaScript · Asincronía y Retos</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+</head>
+<body>
+  <main class="card">
+    <div class="nav-links">
+      <a class="volver" href="../index.html">← Índice de ejercicios</a>
+      <a class="volver" href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata1.js" style="color: var(--texto-muted);">
+        Ver en Visor de Código ↗
+      </a>
+    </div>
+
+    <div class="badge">DWECL · Ejercicios de Repaso</div>
+    <h1>Katas de JavaScript: Asincronía</h1>
+    <p class="enunciado">
+      Retos de programación en JavaScript (Codekatas) centrados en asincronía, marcas de tiempo con <code>Date</code>, modo estricto (<code>'use strict'</code>), composición de cadenas y comprobación de propiedades de objetos con el operador <code>in</code>.
+    </p>
+
+    <div class="katas-grid">
+      <!-- Kata 1 -->
+      <article class="kata-item">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 1</span>
+            <span class="kata-file">codekata1.js</span>
+          </div>
+          <h3 class="kata-title">Objeto Date y Tiempos</h3>
+          <p class="kata-desc">
+            Instanciación de objetos <code>Date</code> en JavaScript y registro de marcas temporales en consola.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-1">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata1.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+
+      <!-- Kata 2 -->
+      <article class="kata-item">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 2</span>
+            <span class="kata-file">codekata2.js</span>
+          </div>
+          <h3 class="kata-title">Cadenas y Conexión</h3>
+          <p class="kata-desc">
+            Modo estricto, concatenación e interpolación de literales de cadena en JavaScript.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-2">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata2.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+
+      <!-- Kata 3 -->
+      <article class="kata-item">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 3</span>
+            <span class="kata-file">codekata3.js</span>
+          </div>
+          <h3 class="kata-title">Objetos y Operador in</h3>
+          <p class="kata-desc">
+            Verificación de membresía y pertenencia de propiedades dinámicas sobre diccionarios y objetos literales.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-3">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata3.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="global-actions">
+      <button type="button" id="btn-run-all" style="background:#1d3557;">▶ Ejecutar Todas las Katas</button>
+      <button type="button" id="btn-clear" class="btn-secondary">Limpiar Salida</button>
+    </div>
+
+    <h2>
+      <span>Salida de Consola</span>
+      <span style="font-size:0.8rem; font-weight:normal; color:var(--texto-muted);" id="status-text">Listo</span>
+    </h2>
+    <div id="resultado" class="salida" aria-live="polite"><span class="salida-vacia">// Pulsa en "Ejecutar" en cualquiera de las katas para ver el resultado</span></div>
+    <p class="nota">Abre las DevTools (F12) → Consola para ver también las salidas nativas de JavaScript.</p>
+  </main>
+
+  <script>
+    (function() {
+      'use strict';
+
+      const salida = document.getElementById('resultado');
+      const statusText = document.getElementById('status-text');
+
+      function logOutput(prefix, args) {
+        const text = Array.from(args).map(function(item) {
+          if (item instanceof Date) return item.toISOString() + ' (' + item.toString() + ')';
+          if (typeof item === 'object' && item !== null) return JSON.stringify(item, null, 2);
+          return String(item);
+        }).join(' ');
+
+        if (salida.querySelector('.salida-vacia')) {
+          salida.innerHTML = '';
+        }
+
+        const line = document.createElement('div');
+        line.style.marginBottom = '0.35rem';
+        const timestamp = new Date().toLocaleTimeString();
+        line.innerHTML = '<span style="color:#7ee787; font-weight:600;">[' + timestamp + '] [' + prefix + ']</span> ' + escapeHtml(text);
+        salida.appendChild(line);
+        salida.scrollTop = salida.scrollHeight;
+      }
+
+      function escapeHtml(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function runKata1() {
+        statusText.textContent = 'Ejecutando Kata 1...';
+        const origLog = console.log;
+        try {
+          console.log = function() {
+            logOutput('KATA-1', arguments);
+            origLog.apply(console, arguments);
+          };
+
+          // Lógica de codekata1.js
+          const currentDate = new Date();
+          console.log(currentDate);
+
+          const secondCurrentDate = new Date();
+          console.log(secondCurrentDate);
+        } finally {
+          console.log = origLog;
+          statusText.textContent = 'Kata 1 completada';
+        }
+      }
+
+      function runKata2() {
+        statusText.textContent = 'Ejecutando Kata 2...';
+        const origLog = console.log;
+        try {
+          console.log = function() {
+            logOutput('KATA-2', arguments);
+            origLog.apply(console, arguments);
+          };
+
+          // Lógica de codekata2.js
+          const myText = "Everything is connected";
+          console.log(myText + ", and connection is power.");
+        } finally {
+          console.log = origLog;
+          statusText.textContent = 'Kata 2 completada';
+        }
+      }
+
+      function runKata3() {
+        statusText.textContent = 'Ejecutando Kata 3...';
+        const origLog = console.log;
+        try {
+          console.log = function() {
+            logOutput('KATA-3', arguments);
+            origLog.apply(console, arguments);
+          };
+
+          // Lógica de codekata3.js
+          const myFavouriteFruit = "lemon";
+          const myAvailableFruits = {
+            lemon: "Citric",
+            watermelon: "Big Fruit",
+            banana: "Tropical"
+          };
+          console.log(myFavouriteFruit in myAvailableFruits);
+        } finally {
+          console.log = origLog;
+          statusText.textContent = 'Kata 3 completada';
+        }
+      }
+
+      document.getElementById('btn-run-1').addEventListener('click', runKata1);
+      document.getElementById('btn-run-2').addEventListener('click', runKata2);
+      document.getElementById('btn-run-3').addEventListener('click', runKata3);
+
+      document.getElementById('btn-run-all').addEventListener('click', function() {
+        runKata1();
+        runKata2();
+        runKata3();
+        statusText.textContent = 'Todas las katas ejecutadas';
+      });
+
+      document.getElementById('btn-clear').addEventListener('click', function() {
+        salida.innerHTML = '<span class="salida-vacia">// Salida limpia. Pulsa en "Ejecutar" para probar una kata.</span>';
+        statusText.textContent = 'Listo';
+      });
+    })();
+  </script>
+</body>
+</html>
