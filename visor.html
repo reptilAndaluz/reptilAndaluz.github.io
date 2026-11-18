@@ -968,11 +968,24 @@
         return true;
       });
 
-      analyzeProjects();
-      renderProjects();
+      if (state.owner === "reptilAndaluz" && state.repo === "reptilAndaluz.github.io") {
+        const localFallback = getLocalTreeFallback();
+        localFallback.forEach(function(localFile) {
+          if (!state.tree.some(function(t) { return t.path === localFile.path; })) {
+            state.tree.push(localFile);
+          }
+        });
+      }
 
       const params = new URLSearchParams(window.location.search);
       const targetFile = params.get("f") || params.get("file");
+
+      if (targetFile && !state.tree.some(function(f) { return f.path === targetFile; })) {
+        state.tree.push({ path: targetFile, size: 1000, type: "blob" });
+      }
+
+      analyzeProjects();
+      renderProjects();
 
       if (targetFile) {
         const found = state.tree.find(function(f) { return f.path === targetFile; });
@@ -1026,6 +1039,11 @@
       files.push({ path: "EjerciciosRepaso/ejercicio" + i + "/script.js", size: 1500, type: "blob" });
       files.push({ path: "EjerciciosRepaso/ejercicio" + i + "/style.css", size: 2000, type: "blob" });
     }
+    files.push({ path: "EjerciciosRepaso/kata_asincroniaJS/index.html", size: 4500, type: "blob" });
+    files.push({ path: "EjerciciosRepaso/kata_asincroniaJS/style.css", size: 3000, type: "blob" });
+    files.push({ path: "EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata1.js", size: 300, type: "blob" });
+    files.push({ path: "EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata2.js", size: 200, type: "blob" });
+    files.push({ path: "EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata3.js", size: 300, type: "blob" });
     return files;
   }
 
@@ -1042,6 +1060,14 @@
         state.projects[group] = [];
       }
       state.projects[group].push(file);
+
+      if (file.path.startsWith("EjerciciosRepaso/kata_asincroniaJS")) {
+        const kataGroup = "kata_asincroniaJS";
+        if (!state.projects[kataGroup]) {
+          state.projects[kataGroup] = [];
+        }
+        state.projects[kataGroup].push(file);
+      }
     });
   }
 
@@ -1095,6 +1121,10 @@
   }
 
   function selectProjectForFile(filePath) {
+    if (filePath.startsWith("EjerciciosRepaso/kata_asincroniaJS") && state.projects["kata_asincroniaJS"]) {
+      selectProject("kata_asincroniaJS");
+      return;
+    }
     var parts = filePath.split("/");
     var group = parts.length > 1 ? parts[0] : "Raíz / General";
     if (state.projects[group]) {
@@ -1156,7 +1186,10 @@
       
       var badge = getBadgeClass(file.path);
       var displayPath = file.path;
-      if (state.activeProject !== "Todos los archivos" && state.activeProject !== "Raíz / General") {
+      if (state.activeProject === "kata_asincroniaJS") {
+        displayPath = displayPath.replace(/^EjerciciosRepaso\/kata_asincroniaJS\/?/, "");
+        if (!displayPath) displayPath = "index.html";
+      } else if (state.activeProject !== "Todos los archivos" && state.activeProject !== "Raíz / General") {
         if (displayPath.startsWith(state.activeProject + "/")) {
           displayPath = displayPath.substring(state.activeProject.length + 1);
         }
@@ -1214,6 +1247,12 @@
       dom.btnOpenExternal.classList.remove("hidden");
       dom.btnOpenExternal.href = externalPagesUrl;
       state.currentHtmlTarget = filePath;
+    } else if (filePath.startsWith("EjerciciosRepaso/kata_asincroniaJS")) {
+      var kataIndex = "EjerciciosRepaso/kata_asincroniaJS/index.html";
+      dom.btnLaunchPreview.classList.remove("hidden");
+      dom.btnOpenExternal.classList.remove("hidden");
+      dom.btnOpenExternal.href = getGitHubPagesUrl(state.owner, state.repo, kataIndex);
+      state.currentHtmlTarget = kataIndex;
     } else {
       var currentProjFiles = state.projects[state.activeProject] || [];
       var projectIndex = currentProjFiles.find(function(f) { return f.path.endsWith("index.html"); });
