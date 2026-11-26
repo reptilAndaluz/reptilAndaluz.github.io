@@ -162,7 +162,18 @@
           .replace(/'/g, '&#039;');
       }
 
+      function setActiveCard(cardId) {
+        document.querySelectorAll('.kata-item').forEach(function(el) {
+          el.classList.remove('active');
+        });
+        const card = document.getElementById(cardId);
+        if (card) {
+          card.classList.add('active');
+        }
+      }
+
       function runKata1() {
+        setActiveCard('kata-1');
         statusText.textContent = 'Ejecutando Kata 1...';
         const origLog = console.log;
         try {
@@ -184,6 +195,7 @@
       }
 
       function runKata2() {
+        setActiveCard('kata-2');
         statusText.textContent = 'Ejecutando Kata 2...';
         const origLog = console.log;
         try {
@@ -202,6 +214,7 @@
       }
 
       function runKata3() {
+        setActiveCard('kata-3');
         statusText.textContent = 'Ejecutando Kata 3...';
         const origLog = console.log;
         try {
@@ -220,6 +233,7 @@
       }
 
       function runKata4() {
+        setActiveCard('kata-4');
         statusText.textContent = 'Ejecutando Kata 4...';
         const origLog = console.log;
         try {
@@ -248,6 +262,7 @@
       }
 
       function runKata5() {
+        setActiveCard('kata-5');
         statusText.textContent = 'Ejecutando Kata 5...';
         const origLog = console.log;
         try {
@@ -291,6 +306,9 @@
       document.getElementById('btn-run-5').addEventListener('click', runKata5);
 
       document.getElementById('btn-run-all').addEventListener('click', function() {
+        document.querySelectorAll('.kata-item').forEach(function(el) {
+          el.classList.remove('active');
+        });
         runKata1();
         runKata2();
         runKata3();
@@ -304,14 +322,46 @@
         statusText.textContent = 'Listo';
       });
 
-      // Ejecución automática si se pasa ancla en la URL (#kata-1, #kata-2, #kata-3, #kata-4, #kata-5)
-      if (window.location.hash) {
+      // Manejo y ejecución de anclas en la URL (#kata-1 .. #kata-5) con resaltado y desplazamiento
+      function handleHash() {
+        if (!window.location.hash) return;
         const hash = window.location.hash.toLowerCase();
-        if (hash === '#kata-1' || hash === '#kata1') runKata1();
-        else if (hash === '#kata-2' || hash === '#kata2') runKata2();
-        else if (hash === '#kata-3' || hash === '#kata3') runKata3();
-        else if (hash === '#kata-4' || hash === '#kata4') runKata4();
-        else if (hash === '#kata-5' || hash === '#kata5') runKata5();
+        let targetId = null;
+
+        if (hash === '#kata-1' || hash === '#kata1') {
+          targetId = 'kata-1';
+          runKata1();
+        } else if (hash === '#kata-2' || hash === '#kata2') {
+          targetId = 'kata-2';
+          runKata2();
+        } else if (hash === '#kata-3' || hash === '#kata3') {
+          targetId = 'kata-3';
+          runKata3();
+        } else if (hash === '#kata-4' || hash === '#kata4') {
+          targetId = 'kata-4';
+          runKata4();
+        } else if (hash === '#kata-5' || hash === '#kata5') {
+          targetId = 'kata-5';
+          runKata5();
+        }
+
+        if (targetId) {
+          setActiveCard(targetId);
+          const targetEl = document.getElementById(targetId);
+          if (targetEl) {
+            try {
+              targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } catch(e) {
+              targetEl.scrollIntoView();
+            }
+          }
+        }
+      }
+
+      window.addEventListener('load', handleHash);
+      window.addEventListener('hashchange', handleHash);
+      if (document.readyState === 'complete' || document.readyState === 'interactive') {
+        handleHash();
       }
     })();
   </script>

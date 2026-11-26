@@ -1250,7 +1250,9 @@
       dom.btnOpenExternal.href = externalPagesUrl;
       state.currentHtmlTarget = filePath;
     } else if (filePath.startsWith("EjerciciosRepaso/kata_asincroniaJS")) {
-      var kataIndex = "EjerciciosRepaso/kata_asincroniaJS/index.html";
+      var kataNumMatch = filePath.match(/codekata(\d+)\.js$/);
+      var kataAnchor = kataNumMatch ? ("#kata-" + kataNumMatch[1]) : "";
+      var kataIndex = "EjerciciosRepaso/kata_asincroniaJS/index.html" + kataAnchor;
       dom.btnLaunchPreview.classList.remove("hidden");
       dom.btnOpenExternal.classList.remove("hidden");
       dom.btnOpenExternal.href = getGitHubPagesUrl(state.owner, state.repo, kataIndex);
@@ -1356,13 +1358,14 @@
     addConsoleLog("Iniciando entorno de ejecución interactiva...", "log");
 
     try {
-      var baseDir = htmlPath.includes("/") ? htmlPath.substring(0, htmlPath.lastIndexOf("/")) : "";
+      var cleanHtmlPath = (htmlPath || "").split('#')[0];
+      var baseDir = cleanHtmlPath.includes("/") ? cleanHtmlPath.substring(0, cleanHtmlPath.lastIndexOf("/")) : "";
       var rawBase = "https://raw.githubusercontent.com/" + state.owner + "/" + state.repo + "/" + state.branch + "/";
-      var rawHtmlUrl = rawBase + htmlPath;
+      var rawHtmlUrl = rawBase + cleanHtmlPath;
       
       var htmlRes = await fetch(rawHtmlUrl).catch(function() { return null; });
       if (!htmlRes || !htmlRes.ok) {
-        htmlRes = await fetch(htmlPath).catch(function() { return null; });
+        htmlRes = await fetch(cleanHtmlPath).catch(function() { return null; });
       }
       if (!htmlRes || !htmlRes.ok) throw new Error("No se pudo cargar HTML");
       var htmlContent = await htmlRes.text();
