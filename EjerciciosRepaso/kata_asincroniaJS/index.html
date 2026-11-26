@@ -19,12 +19,12 @@
     <div class="badge">DWECL · Ejercicios de Repaso</div>
     <h1>Katas de JavaScript: Asincronía</h1>
     <p class="enunciado">
-      Retos de programación en JavaScript (Codekatas) centrados en asincronía, marcas de tiempo con <code>Date</code>, modo estricto (<code>'use strict'</code>), composición de cadenas y comprobación de propiedades de objetos con el operador <code>in</code>.
+      Retos de programación en JavaScript (Codekatas) centrados en asincronía, marcas de tiempo con <code>Date</code>, modo estricto (<code>'use strict'</code>), composición de cadenas, operador <code>in</code> sobre colecciones y estructuras <code>Set</code> con bucles <code>for...of</code>.
     </p>
 
     <div class="katas-grid">
       <!-- Kata 1 -->
-      <article class="kata-item">
+      <article class="kata-item" id="kata-1">
         <div>
           <div class="kata-header">
             <span class="kata-tag">KATA 1</span>
@@ -42,7 +42,7 @@
       </article>
 
       <!-- Kata 2 -->
-      <article class="kata-item">
+      <article class="kata-item" id="kata-2">
         <div>
           <div class="kata-header">
             <span class="kata-tag">KATA 2</span>
@@ -60,20 +60,56 @@
       </article>
 
       <!-- Kata 3 -->
-      <article class="kata-item">
+      <article class="kata-item" id="kata-3">
         <div>
           <div class="kata-header">
             <span class="kata-tag">KATA 3</span>
             <span class="kata-file">codekata3.js</span>
           </div>
-          <h3 class="kata-title">Objetos y Operador in</h3>
+          <h3 class="kata-title">Arrays y Operador in</h3>
           <p class="kata-desc">
-            Verificación de membresía y pertenencia de propiedades dinámicas sobre diccionarios y objetos literales.
+            Comprobación de existencia de índices numéricos en arrays mediante el operador <code>in</code>.
           </p>
         </div>
         <div class="kata-actions">
           <button type="button" id="btn-run-3">▶ Ejecutar</button>
           <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata3.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+
+      <!-- Kata 4 -->
+      <article class="kata-item" id="kata-4">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 4</span>
+            <span class="kata-file">codekata4.js</span>
+          </div>
+          <h3 class="kata-title">Conjuntos Set y for...of</h3>
+          <p class="kata-desc">
+            Estructuras <code>Set</code>, verificación con <code>has()</code> y control de bucle <code>for...of</code> con <code>break</code> y <code>continue</code>.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-4">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata4.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+
+      <!-- Kata 5 -->
+      <article class="kata-item" id="kata-5">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 5</span>
+            <span class="kata-file">codekata5.js</span>
+          </div>
+          <h3 class="kata-title">Generadores (function*)</h3>
+          <p class="kata-desc">
+            Funciones generadoras con <code>yield</code> para tiradas aleatorias y lógica de juego CPU vs Jugador.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-5">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata5.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
         </div>
       </article>
     </div>
@@ -175,27 +211,91 @@
           };
 
           // Lógica de codekata3.js
-          const myFavouriteFruit = "lemon";
-          const myAvailableFruits = {
-            lemon: "Citric",
-            watermelon: "Big Fruit",
-            banana: "Tropical"
-          };
-          console.log(myFavouriteFruit in myAvailableFruits);
+          const myAvailableFruits = ["lemon", "orange", "banana"];
+          console.log(0 in myAvailableFruits);
         } finally {
           console.log = origLog;
           statusText.textContent = 'Kata 3 completada';
         }
       }
 
+      function runKata4() {
+        statusText.textContent = 'Ejecutando Kata 4...';
+        const origLog = console.log;
+        try {
+          console.log = function() {
+            logOutput('KATA-4', arguments);
+            origLog.apply(console, arguments);
+          };
+
+          // Lógica de codekata4.js
+          const fruits = ["orange", "lemon", "grape"];
+          const myOptions = new Set(["watermelon", "banana"]);
+
+          for (let elem of fruits) {
+            if (myOptions.has(elem)) {
+              console.log(elem);
+              break;
+            } else {
+              console.log(elem);
+              continue;
+            }
+          }
+        } finally {
+          console.log = origLog;
+          statusText.textContent = 'Kata 4 completada';
+        }
+      }
+
+      function runKata5() {
+        statusText.textContent = 'Ejecutando Kata 5...';
+        const origLog = console.log;
+        try {
+          console.log = function() {
+            logOutput('KATA-5', arguments);
+            origLog.apply(console, arguments);
+          };
+
+          // Lógica de codekata5.js
+          function* extractNumber(attemps) {
+            for (let i = 0; i < attemps; i++) {
+              yield Math.floor(Math.random() * 91);
+            }
+          }
+
+          let cpu = 0;
+          let player = 0;
+
+          // Tiradas CPU
+          let cpuGenerator = extractNumber(2);
+          cpu += cpuGenerator.next().value;
+          cpu += cpuGenerator.next().value;
+
+          // Tiradas player
+          let playerGenerator = extractNumber(2);
+          player += playerGenerator.next().value;
+          player += playerGenerator.next().value;
+
+          console.log("CPU: " + cpu);
+          console.log((cpu > player) ? "CPU WIN" : "PLAYER WIN");
+        } finally {
+          console.log = origLog;
+          statusText.textContent = 'Kata 5 completada';
+        }
+      }
+
       document.getElementById('btn-run-1').addEventListener('click', runKata1);
       document.getElementById('btn-run-2').addEventListener('click', runKata2);
       document.getElementById('btn-run-3').addEventListener('click', runKata3);
+      document.getElementById('btn-run-4').addEventListener('click', runKata4);
+      document.getElementById('btn-run-5').addEventListener('click', runKata5);
 
       document.getElementById('btn-run-all').addEventListener('click', function() {
         runKata1();
         runKata2();
         runKata3();
+        runKata4();
+        runKata5();
         statusText.textContent = 'Todas las katas ejecutadas';
       });
 
@@ -203,6 +303,16 @@
         salida.innerHTML = '<span class="salida-vacia">// Salida limpia. Pulsa en "Ejecutar" para probar una kata.</span>';
         statusText.textContent = 'Listo';
       });
+
+      // Ejecución automática si se pasa ancla en la URL (#kata-1, #kata-2, #kata-3, #kata-4, #kata-5)
+      if (window.location.hash) {
+        const hash = window.location.hash.toLowerCase();
+        if (hash === '#kata-1' || hash === '#kata1') runKata1();
+        else if (hash === '#kata-2' || hash === '#kata2') runKata2();
+        else if (hash === '#kata-3' || hash === '#kata3') runKata3();
+        else if (hash === '#kata-4' || hash === '#kata4') runKata4();
+        else if (hash === '#kata-5' || hash === '#kata5') runKata5();
+      }
     })();
   </script>
 </body>

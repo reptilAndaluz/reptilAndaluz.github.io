@@ -109,6 +109,11 @@ h1 {
   border-color: var(--acento-borde);
 }
 
+.kata-item:target {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px var(--acento-suave), 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
 .kata-header {
   display: flex;
   justify-content: space-between;
