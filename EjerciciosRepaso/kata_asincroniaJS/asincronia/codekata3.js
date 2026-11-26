@@ -1,11 +1,3 @@
-let myFavouriteFruit = "lemon";
+let myAvailableFruits = ["lemon", "orange", "banana"];
 
-let myAvailableFruits = {
-    lemon: "Citric",
-    watermelon: "Big Fruit",
-    banana: "Tropical"
-};
-
-
-
-console.log(myFavouriteFruit in myAvailableFruits);
+console.log(0 in myAvailableFruits);
