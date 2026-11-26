@@ -19,7 +19,7 @@
     <div class="badge">DWECL · Ejercicios de Repaso</div>
     <h1>Katas de JavaScript: Asincronía</h1>
     <p class="enunciado">
-      Retos de programación en JavaScript (Codekatas) centrados en asincronía, marcas de tiempo con <code>Date</code>, modo estricto (<code>'use strict'</code>), composición de cadenas, operador <code>in</code> sobre colecciones y estructuras <code>Set</code> con bucles <code>for...of</code>.
+      Retos de programación en JavaScript (Codekatas) centrados en asincronía, fechas (<code>Date</code>), cadenas, operador <code>in</code>, estructuras <code>Set</code>, generadores (<code>function*</code>), expresiones regulares (<code>RegExp</code>), clases con campos privados y peticiones <code>XMLHttpRequest</code>.
     </p>
 
     <div class="katas-grid">
@@ -112,12 +112,86 @@
           <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata5.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
         </div>
       </article>
+
+      <!-- Kata 6 -->
+      <article class="kata-item" id="kata-6">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 6</span>
+            <span class="kata-file">codekata6.js</span>
+          </div>
+          <h3 class="kata-title">Expresiones Regulares</h3>
+          <p class="kata-desc">
+            Captura de grupos nombrados con <code>RegExp</code> sobre HTML y validación de formato telefónico español.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-6">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata6.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+
+      <!-- Kata 7 -->
+      <article class="kata-item" id="kata-7">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 7</span>
+            <span class="kata-file">codekata7.js</span>
+          </div>
+          <h3 class="kata-title">Clases Extractor y Product</h3>
+          <p class="kata-desc">
+            Clases ES6 con campos privados (<code>#value</code>, <code>#extract</code>) para extraer patrones de HTML.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-7">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata7.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+
+      <!-- Kata 8 -->
+      <article class="kata-item" id="kata-8">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 8</span>
+            <span class="kata-file">codekata8.js</span>
+          </div>
+          <h3 class="kata-title">Extractor HTML Privado</h3>
+          <p class="kata-desc">
+            Encapsulación con atributos y métodos privados (<code>#</code>) y getters en <code>Extractor</code> y <code>Product</code>.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-8">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata8.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
+
+      <!-- Kata 9 -->
+      <article class="kata-item" id="kata-9">
+        <div>
+          <div class="kata-header">
+            <span class="kata-tag">KATA 9</span>
+            <span class="kata-file">codekata9.js</span>
+          </div>
+          <h3 class="kata-title">Petición XMLHttpRequest</h3>
+          <p class="kata-desc">
+            Consulta asíncrona mediante <code>XMLHttpRequest</code> a Bored API e inserción dinámica de nodos en el DOM.
+          </p>
+        </div>
+        <div class="kata-actions">
+          <button type="button" id="btn-run-9" class="request">▶ Ejecutar</button>
+          <a href="../../visor.html?f=EjerciciosRepaso/kata_asincroniaJS/asincronia/codekata9.js" class="btn-outline" style="padding:0.5rem 0.75rem; border-radius:8px; font-size:0.85rem; font-weight:600; text-decoration:none;">Código</a>
+        </div>
+      </article>
     </div>
 
     <div class="global-actions">
       <button type="button" id="btn-run-all" style="background:#1d3557;">▶ Ejecutar Todas las Katas</button>
       <button type="button" id="btn-clear" class="btn-secondary">Limpiar Salida</button>
     </div>
+
+    <div class="activity" id="kata9-activity" aria-live="polite" hidden></div>
 
     <h2>
       <span>Salida de Consola</span>
@@ -133,11 +207,18 @@
 
       const salida = document.getElementById('resultado');
       const statusText = document.getElementById('status-text');
+      const activityContainer = document.getElementById('kata9-activity');
 
       function logOutput(prefix, args) {
         const text = Array.from(args).map(function(item) {
           if (item instanceof Date) return item.toISOString() + ' (' + item.toString() + ')';
-          if (typeof item === 'object' && item !== null) return JSON.stringify(item, null, 2);
+          if (typeof item === 'object' && item !== null) {
+            const json = JSON.stringify(item, null, 2);
+            if (item.constructor && item.constructor.name && item.constructor.name !== 'Object' && !Array.isArray(item)) {
+              return item.constructor.name + ' ' + json;
+            }
+            return json;
+          }
           return String(item);
         }).join(' ');
 
@@ -172,188 +253,259 @@
         }
       }
 
-      function runKata1() {
-        setActiveCard('kata-1');
-        statusText.textContent = 'Ejecutando Kata 1...';
+      /** Ejecuta una kata síncrona capturando su console.log en la salida visual. */
+      function runWithCapture(num, fn) {
+        setActiveCard('kata-' + num);
+        statusText.textContent = 'Ejecutando Kata ' + num + '...';
         const origLog = console.log;
         try {
           console.log = function() {
-            logOutput('KATA-1', arguments);
+            logOutput('KATA-' + num, arguments);
             origLog.apply(console, arguments);
           };
-
-          // Lógica de codekata1.js
-          const currentDate = new Date();
-          console.log(currentDate);
-
-          const secondCurrentDate = new Date();
-          console.log(secondCurrentDate);
+          fn();
+          statusText.textContent = 'Kata ' + num + ' completada';
+        } catch (err) {
+          logOutput('KATA-' + num, ['Error:', err.message || String(err)]);
+          statusText.textContent = 'Error en Kata ' + num;
         } finally {
           console.log = origLog;
-          statusText.textContent = 'Kata 1 completada';
         }
       }
 
-      function runKata2() {
-        setActiveCard('kata-2');
-        statusText.textContent = 'Ejecutando Kata 2...';
-        const origLog = console.log;
-        try {
-          console.log = function() {
-            logOutput('KATA-2', arguments);
-            origLog.apply(console, arguments);
-          };
+      // Lógica compartida para codekata7.js y codekata8.js
+      function executeExtractorKata() {
+        const inputHtml = `<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <p>Web de viajes</p>
+        <div class="product">
+        <div class="imagen">
+            <img src="beach.jpg"/>
+        </div>
+        <div class="content">
+            <p class="title">vacaciones en la playa</p>
+            <p class="desc">para dos personas con pension completa</p>
+            <p class="price">165&euro; por noche/persona</p>
+        </div>
+        </div>
+    </body>
+</html>`;
 
-          // Lógica de codekata2.js
-          const myText = "Everything is connected";
-          console.log(myText + ", and connection is power.");
-        } finally {
-          console.log = origLog;
-          statusText.textContent = 'Kata 2 completada';
-        }
-      }
+        class Extractor {
+          #value;
 
-      function runKata3() {
-        setActiveCard('kata-3');
-        statusText.textContent = 'Ejecutando Kata 3...';
-        const origLog = console.log;
-        try {
-          console.log = function() {
-            logOutput('KATA-3', arguments);
-            origLog.apply(console, arguments);
-          };
-
-          // Lógica de codekata3.js
-          const myAvailableFruits = ["lemon", "orange", "banana"];
-          console.log(0 in myAvailableFruits);
-        } finally {
-          console.log = origLog;
-          statusText.textContent = 'Kata 3 completada';
-        }
-      }
-
-      function runKata4() {
-        setActiveCard('kata-4');
-        statusText.textContent = 'Ejecutando Kata 4...';
-        const origLog = console.log;
-        try {
-          console.log = function() {
-            logOutput('KATA-4', arguments);
-            origLog.apply(console, arguments);
-          };
-
-          // Lógica de codekata4.js
-          const fruits = ["orange", "lemon", "grape"];
-          const myOptions = new Set(["watermelon", "banana"]);
-
-          for (let elem of fruits) {
-            if (myOptions.has(elem)) {
-              console.log(elem);
-              break;
-            } else {
-              console.log(elem);
-              continue;
-            }
-          }
-        } finally {
-          console.log = origLog;
-          statusText.textContent = 'Kata 4 completada';
-        }
-      }
-
-      function runKata5() {
-        setActiveCard('kata-5');
-        statusText.textContent = 'Ejecutando Kata 5...';
-        const origLog = console.log;
-        try {
-          console.log = function() {
-            logOutput('KATA-5', arguments);
-            origLog.apply(console, arguments);
-          };
-
-          // Lógica de codekata5.js
-          function* extractNumber(attemps) {
-            for (let i = 0; i < attemps; i++) {
-              yield Math.floor(Math.random() * 91);
-            }
+          constructor(html, pattern) {
+            this.#value = this.#extract(html, pattern);
           }
 
-          let cpu = 0;
-          let player = 0;
+          get value() {
+            return;
+          }
 
-          // Tiradas CPU
-          let cpuGenerator = extractNumber(2);
-          cpu += cpuGenerator.next().value;
-          cpu += cpuGenerator.next().value;
-
-          // Tiradas player
-          let playerGenerator = extractNumber(2);
-          player += playerGenerator.next().value;
-          player += playerGenerator.next().value;
-
-          console.log("CPU: " + cpu);
-          console.log((cpu > player) ? "CPU WIN" : "PLAYER WIN");
-        } finally {
-          console.log = origLog;
-          statusText.textContent = 'Kata 5 completada';
+          #extract(html, pattern) {
+            const capture = pattern.exec(html);
+            return capture[1];
+          }
         }
+
+        class Product {
+          #title;
+          #image;
+
+          constructor(title, image) {
+            this.#title = title;
+            this.#image = image;
+          }
+
+          get title() {
+            return this.#title;
+          }
+
+          get image() {
+            return this.#image;
+          }
+        }
+
+        const image = new Extractor(inputHtml, new RegExp(/<img src="(?<image>.*)"\/>/));
+        console.log(image);
       }
 
-      document.getElementById('btn-run-1').addEventListener('click', runKata1);
-      document.getElementById('btn-run-2').addEventListener('click', runKata2);
-      document.getElementById('btn-run-3').addEventListener('click', runKata3);
-      document.getElementById('btn-run-4').addEventListener('click', runKata4);
-      document.getElementById('btn-run-5').addEventListener('click', runKata5);
+      // Lógica de codekata9.js (XMLHttpRequest + renderizado en .activity)
+      function insertOutputResponse(response) {
+        const decodedResponse = JSON.parse(response);
+        activityContainer.innerHTML = '';
+        activityContainer.hidden = false;
+
+        const activity = document.createElement('h4');
+        activity.append(decodedResponse.activity || 'Actividad obtenida');
+        activityContainer.append(activity);
+
+        if (decodedResponse.link) {
+          const link = document.createElement('a');
+          link.href = decodedResponse.link;
+          link.text = decodedResponse.link;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          activityContainer.append(link);
+        }
+
+        const type = document.createElement('p');
+        type.append(decodedResponse.type || '');
+        activityContainer.append(type);
+      }
+
+      function runKata9() {
+        setActiveCard('kata-9');
+        statusText.textContent = 'Ejecutando Kata 9 (XMLHttpRequest)...';
+        const url = 'https://boredapi.com';
+        const http = new XMLHttpRequest();
+
+        logOutput('KATA-9', ['Iniciando petición GET con XMLHttpRequest a', url]);
+        http.open('GET', url);
+
+        http.onreadystatechange = function() {
+          if (this.readyState !== 4) return;
+          if (this.status === 200) {
+            try {
+              insertOutputResponse(this.response);
+              logOutput('KATA-9', ['Respuesta JSON recibida (200 OK):', this.response]);
+              statusText.textContent = 'Kata 9 completada';
+            } catch (err) {
+              activityContainer.hidden = false;
+              activityContainer.innerHTML = '<h4>Respuesta no JSON (200 OK)</h4><p>El servidor devolvió un formato no JSON (' + escapeHtml(err.message) + ').</p>';
+              logOutput('KATA-9', ['Respuesta 200 recibida pero no es JSON válido:', err.message]);
+              statusText.textContent = 'Kata 9 finalizada con aviso';
+            }
+          } else {
+            activityContainer.hidden = false;
+            activityContainer.innerHTML = '<h4>Petición XMLHttpRequest finalizada</h4><p>No se pudo obtener JSON desde ' + escapeHtml(url) + ' (status HTTP: ' + this.status + ', posible bloqueo CORS o dominio inactivo).</p>';
+            logOutput('KATA-9', ['XHR finalizado sin datos JSON (status:', this.status + '). CORS o API externa no disponible.']);
+            statusText.textContent = 'Kata 9 finalizada (status ' + this.status + ')';
+          }
+        };
+
+        http.send();
+      }
+
+      const kataRunners = {
+        1: function() {
+          runWithCapture(1, function() {
+            const currentDate = new Date();
+            console.log(currentDate);
+            const secondCurrentDate = new Date();
+            console.log(secondCurrentDate);
+          });
+        },
+        2: function() {
+          runWithCapture(2, function() {
+            const myText = 'Everything is connected';
+            console.log(myText + ', and connection is power.');
+          });
+        },
+        3: function() {
+          runWithCapture(3, function() {
+            const myAvailableFruits = ['lemon', 'orange', 'banana'];
+            console.log(0 in myAvailableFruits);
+          });
+        },
+        4: function() {
+          runWithCapture(4, function() {
+            const fruits = ['orange', 'lemon', 'grape'];
+            const myOptions = new Set(['watermelon', 'banana']);
+            for (let elem of fruits) {
+              if (myOptions.has(elem)) {
+                console.log(elem);
+                break;
+              } else {
+                console.log(elem);
+                continue;
+              }
+            }
+          });
+        },
+        5: function() {
+          runWithCapture(5, function() {
+            function* extractNumber(attemps) {
+              for (let i = 0; i < attemps; i++) {
+                yield Math.floor(Math.random() * 91);
+              }
+            }
+            let cpu = 0;
+            let player = 0;
+            const cpuGenerator = extractNumber(2);
+            cpu += cpuGenerator.next().value;
+            cpu += cpuGenerator.next().value;
+            const playerGenerator = extractNumber(2);
+            player += playerGenerator.next().value;
+            player += playerGenerator.next().value;
+            console.log('CPU: ' + cpu);
+            console.log((cpu > player) ? 'CPU WIN' : 'PLAYER WIN');
+          });
+        },
+        6: function() {
+          runWithCapture(6, function() {
+            const html = '<html><body><h1 class="h1 font text">Formación técnica</h1></body></html>';
+            const expression = new RegExp(/<h1.*class=".*">(?<texto>.*)<\/h1>/);
+            const result = expression.exec(html);
+            console.log(result.groups.texto);
+
+            const phone = new RegExp(/\+34\s?([0-9]{3})\s?([0-9]{3})\s?([0-9]{3})\s?/);
+            const isValid = phone.exec('+34 600 123 456');
+            console.log(isValid !== null);
+          });
+        },
+        7: function() {
+          runWithCapture(7, executeExtractorKata);
+        },
+        8: function() {
+          runWithCapture(8, executeExtractorKata);
+        },
+        9: runKata9
+      };
+
+      Object.keys(kataRunners).forEach(function(num) {
+        const btn = document.getElementById('btn-run-' + num);
+        if (btn) {
+          btn.addEventListener('click', kataRunners[num]);
+        }
+      });
 
       document.getElementById('btn-run-all').addEventListener('click', function() {
         document.querySelectorAll('.kata-item').forEach(function(el) {
           el.classList.remove('active');
         });
-        runKata1();
-        runKata2();
-        runKata3();
-        runKata4();
-        runKata5();
+        Object.keys(kataRunners).forEach(function(num) {
+          kataRunners[num]();
+        });
         statusText.textContent = 'Todas las katas ejecutadas';
       });
 
       document.getElementById('btn-clear').addEventListener('click', function() {
         salida.innerHTML = '<span class="salida-vacia">// Salida limpia. Pulsa en "Ejecutar" para probar una kata.</span>';
+        activityContainer.innerHTML = '';
+        activityContainer.hidden = true;
         statusText.textContent = 'Listo';
       });
 
-      // Manejo y ejecución de anclas en la URL (#kata-1 .. #kata-5) con resaltado y desplazamiento
+      // Manejo y ejecución de anclas en la URL (#kata-1 .. #kata-9) con resaltado y desplazamiento
       function handleHash() {
         if (!window.location.hash) return;
-        const hash = window.location.hash.toLowerCase();
-        let targetId = null;
+        const match = window.location.hash.toLowerCase().match(/^#kata-?(\d+)$/);
+        if (!match) return;
+        const num = match[1];
+        if (!kataRunners[num]) return;
 
-        if (hash === '#kata-1' || hash === '#kata1') {
-          targetId = 'kata-1';
-          runKata1();
-        } else if (hash === '#kata-2' || hash === '#kata2') {
-          targetId = 'kata-2';
-          runKata2();
-        } else if (hash === '#kata-3' || hash === '#kata3') {
-          targetId = 'kata-3';
-          runKata3();
-        } else if (hash === '#kata-4' || hash === '#kata4') {
-          targetId = 'kata-4';
-          runKata4();
-        } else if (hash === '#kata-5' || hash === '#kata5') {
-          targetId = 'kata-5';
-          runKata5();
-        }
-
-        if (targetId) {
-          setActiveCard(targetId);
-          const targetEl = document.getElementById(targetId);
-          if (targetEl) {
-            try {
-              targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } catch(e) {
-              targetEl.scrollIntoView();
-            }
+        const targetId = 'kata-' + num;
+        kataRunners[num]();
+        setActiveCard(targetId);
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          try {
+            targetEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } catch (e) {
+            targetEl.scrollIntoView();
           }
         }
       }

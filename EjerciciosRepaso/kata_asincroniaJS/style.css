@@ -248,3 +248,30 @@ h2 {
   color: var(--texto-muted);
   margin-top: 0.6rem;
 }
+
+.activity {
+  margin-top: 1rem;
+  padding: 1rem 1.2rem;
+  background: var(--acento-suave);
+  border: 1px solid var(--acento-borde);
+  border-left: 4px solid var(--acento);
+  border-radius: 10px;
+}
+
+.activity h4 {
+  margin: 0 0 0.4rem 0;
+  color: #1e293b;
+}
+
+.activity a {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--acento);
+  word-break: break-all;
+}
+
+.activity p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--texto-muted);
+}
